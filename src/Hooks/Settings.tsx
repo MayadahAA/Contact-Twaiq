@@ -1,5 +1,5 @@
 
-export default function Sitting() {
+export default function Settings() {
   return (
     <div>Sitting</div>
   )
