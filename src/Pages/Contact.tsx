@@ -8,7 +8,7 @@ export default function Contact() {
                     <p>Contact</p>
 
                     <div>
-                        <p>Hello</p>
+                        <p>Contact</p>
                     </div>
                 </div>
             </div>
