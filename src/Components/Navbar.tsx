@@ -15,9 +15,9 @@ export default function Navbar() {
                         <div className="flex gap-4">
                             <Link to='/'><li className=""> HOME</li></Link>
                             <Link to='/about'><li className=""> ABOUT</li></Link>
-                            <Link to='/about'><li className=""> CONTACT</li></Link>
-                            <Link to='/register'><li className=""> LOGIN</li></Link>
-                            <Link to='/login'><li className=""> SIGNUP</li></Link>
+                            <Link to='/contact'><li className=""> CONTACT</li></Link>
+                            <Link to='/login'><li className=""> LOGIN</li></Link>
+                            <Link to='/register'><li className=""> SIGNUP</li></Link>
                          
                         </div>
                     </div>
