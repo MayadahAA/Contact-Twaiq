@@ -1,6 +1,12 @@
-
-export default function Dashboard() {
+import Calendar from '../Components/Calendar'
+import Req from '../Components/Requests'
+function Dashboard() {
   return (
-    <div>Dashboard</div>
+    <>
+      <Calendar/>
+      <Req/>
+    </>
   )
 }
+
+export default Dashboard

@@ -16,6 +16,7 @@ export default function Navbar() {
                             <Link to='/'><li className=""> HOME</li></Link>
                             <Link to='/about'><li className=""> ABOUT</li></Link>
                             <Link to='/contact'><li className=""> CONTACT</li></Link>
+                            <Link to='/dashboard'><li className=""> dashboard</li></Link>
                             <Link to='/login'><li className=""> LOGIN</li></Link>
                             <Link to='/register'><li className=""> SIGNUP</li></Link>
                          
