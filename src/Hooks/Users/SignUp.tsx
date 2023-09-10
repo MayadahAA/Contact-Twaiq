@@ -38,6 +38,8 @@ export default function SignUp() {
           email: user.email,
           password: user.password,
           name: user.name,
+          status: "not availble",
+          description: ""
         })
         .then(function (response) {
           console.log(response);
@@ -46,7 +48,7 @@ export default function SignUp() {
       console.error();
     }
     //redirect to login page when successful sign up
-    navigate("/login");
+    navigate("/signin");
   };
 
   return (
