@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 
 export default function NewRequest() {
 
-
     const url = 'https://64ec522df9b2b70f2bfa1874.mockapi.io/api/v1/request'
     const { userId } = useParams();
     //useState Object of request
@@ -33,6 +32,7 @@ export default function NewRequest() {
 
             console.error();
         }
+        setRequest({...requests, description:""})
         alert("ok")
     }
 

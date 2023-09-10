@@ -1,19 +1,15 @@
+import Calendar from '../Components/Calendar'
+import NewRequest from './NewRequest'
+function Dashboard() {
+  return (
+    <>
+    <div className='flex-col'>
 
-export default function Dashboard() {
-  // const user = localStorage.getItem('username')
-  // if (user) {
-  //   null
-  // } else {
-  //   alert("Please Login")
-  //   location.href = '/login'
-  
-  // }
-
-
- 
-    return (
-        <>
-          <p>Dashboard</p>
-        </>
-    )
+      <NewRequest/>
+      <Calendar/>
+    </div>
+    </>
+  )
 }
+
+export default Dashboard
