@@ -28,7 +28,7 @@ function Instrucards() {
   return (
     <>
 
-      <div className="flex justify-start m-10 w-full h-full gap-4">
+      <div className="flex flex-wrap justify-start m-10 w-full h-full gap-4">
 
 
         {
@@ -43,7 +43,7 @@ function Instrucards() {
                   />
                 </div>
                 <div className="text-center">
-                  <h1>instructor {e.name}</h1>
+                  <h1> {e.name}</h1>
                   <h2>{e.field}</h2>
                 </div>
                 <div className="flex flex-wrap w-3/4 gap-2 text-center items-center justify-center">
