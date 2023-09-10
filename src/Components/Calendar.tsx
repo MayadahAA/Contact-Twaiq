@@ -57,7 +57,7 @@ function Calendar() {
       </div>
       <div className="flex border-2 w-6/12">
         {selectedDay && (
-          <div className="flex flex-col gap-5 w-full justify-start">
+          <div className="flex flex-col gap-5 w-full justify-start bg-slate-50 p-4 rounded-md">
             <h2 className="text-lg font-medium text-slate-600 w-1/4 p-3 ">
               {selectedDay}
             </h2>
@@ -76,9 +76,9 @@ function Calendar() {
                   <li>
                     <div
                       key={hourData.time}
-                      className="flex gap-5 border-b-2 p-1"
+                      className="flex gap-5 border-b-2 border-slate-300  p-1"
                     >
-                      <span className="text-lg font-medium text-slate-600 w-1/4 p-3 ">
+                      <span className="text-lg  font-medium text-slate-600 w-1/4 p-3 ">
                         {hourData.time}
                       </span>{" "}
                       {hourData.requests && (
