@@ -17,8 +17,8 @@ export default function Navbar() {
                             <Link to='/about'><li className=""> ABOUT</li></Link>
                             <Link to='/contact'><li className=""> CONTACT</li></Link>
                             <Link to='/dashboard'><li className=""> dashboard</li></Link>
-                            <Link to='/login'><li className=""> LOGIN</li></Link>
-                            <Link to='/register'><li className=""> SIGNUP</li></Link>
+                            <Link to='/signin'><li className=""> Sign In</li></Link>
+                            <Link to='/signup'><li className=""> Sign Up</li></Link>
                          
                         </div>
                     </div>

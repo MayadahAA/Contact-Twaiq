@@ -74,7 +74,7 @@ export default function Login() {
       <div className="flex flex-col items-center justify-center border-2 h-screen bg-slate-200">
         <div className="bg-white shadow-sm h-1/2 flex-col flex justify-around gap-3 p-10 w-1/4 rounded-lg">
           {/* msg */}
-          <div className="text-red-600 font-bold"> {msg}</div>
+          <div className="text-red-600 "> {msg}</div>
           {/* all fields of login  */}
           <div className="font-medium text-center">Sign In</div>
           <div>
