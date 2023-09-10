@@ -99,7 +99,7 @@ export default function Login() {
             className="bg-purple-600 p-1 w-full text-white rounded"
             onClick={input}
           >
-            submit
+            Sign In
           </button>
         </div>
       </div>
