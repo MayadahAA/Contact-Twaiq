@@ -13,7 +13,7 @@ interface IUser {
 
 export default function Login() {
 
-    const url = 'https://64ec522df9b2b70f2bfa1874.mockapi.io/api/v1/users'
+    const url = "https://64ec522df9b2b70f2bfa1874.mockapi.io/api/v1/users";
     const navigate = useNavigate();
 
     //useState for Login validation or rejection message
@@ -47,11 +47,13 @@ export default function Login() {
 
 
     
-    
     //User input from fields
     const input = () => {
+        console.log("---------------------------------- "+user.username);
+        console.log("---------------------------------- "+user.password);
         
         console.log("---------------------------------- "+userApi?.username);
+        console.log("---------------------------------- "+userApi?.password );
         try {
             
             //Check inputs before login 
@@ -65,6 +67,7 @@ export default function Login() {
             else if (userApi?.username == user.username && userApi?.password == user.password) {
 
                 //Confirm login and stored value in  localStorage
+                localStorage.setItem('id', userApi.id );
                 localStorage.setItem('username', user.username );
                 localStorage.setItem('isLogin', 'true');
                 localStorage.setItem('email', userApi.email);
@@ -85,12 +88,12 @@ export default function Login() {
     return (
         <>
             <div className="flex justify-center p-5  ">
-                <div className="flex flex-col bg-white border-2 justify-center items-center gap-5  px-3 font-medium p-5 w-96 h-72  rounded ">
+                <div className="flex flex-col bg-white border-2 justify-center items-center gap-5 border-violet-500 text-violet-500 px-3 font-medium p-5 w-96 h-72  rounded ">
 
                     {/* msg */}
                     <div className='text-red-600 font-bold'> {msg}</div>
                     {/* all fields of login  */}
-                    <div className="font-bold self-start ml-5">Sign In</div>
+                    <div className="font-bold self-start ml-5">Login</div>
                     <div><input className="border border-black p-1 rounded  w-80" placeholder='Username' type="text" value={user.username} onChange={(e) => setUser({ ...user, username: e.target.value })} /></div>
                     <div><input className="border border-black p-1 rounded w-80 " type="text" placeholder='Password' value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} /></div>
                     <div className="self-center ">

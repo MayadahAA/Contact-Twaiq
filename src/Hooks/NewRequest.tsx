@@ -6,6 +6,8 @@ export default function NewRequest() {
 
     const url = 'https://64ec522df9b2b70f2bfa1874.mockapi.io/api/v1/request'
     const { userId } = useParams();
+    console.log(userId);
+    
     //useState Object of request
     const [requests, setRequest] = useState({
       date: '',
@@ -20,7 +22,7 @@ export default function NewRequest() {
             //post Request to url EndPoint
             axios.post(url, {
                 date: requests.date,
-                usrId: id,
+                userId: id,
                 trainerId: userId,
                 description: requests.description,
                 approval:false

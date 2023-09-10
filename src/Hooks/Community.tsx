@@ -12,6 +12,8 @@ interface Data {
 export default function Community() {
 
     const [getItems, setItems] = useState<Data[]>([])
+    console.log(getItems);
+    
     useEffect(() => {
         try {
             axios.get('')
