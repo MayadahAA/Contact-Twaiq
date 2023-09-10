@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface IUser {
   id: string;
@@ -101,6 +101,15 @@ export default function Login() {
           >
             Sign In
           </button>
+          <div >
+            <p className="flex  w-full gap-4 items-center text-center justify-center" >
+              Do not have account ?{" "}
+              <Link to="/signup">
+                {" "}
+                <p className="text-purple-700 font-medium">Sign Up</p>
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
     </>

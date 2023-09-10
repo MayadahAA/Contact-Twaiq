@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function SignUp() {
   const url = "https://64ec522df9b2b70f2bfa1874.mockapi.io/api/v1/users";
@@ -58,25 +58,24 @@ export default function SignUp() {
           {/* all fields of sign up  */}
           <div className="font-medium text-center">Sign Up</div>
           <div className="flex gap-3">
-
-          <div>
-            <input
-              className="border border-slate-400 p-1 rounded-md  w-full"
-              type="text"
-              placeholder="Username"
-              value={user.username}
-              onChange={(e) => setUser({ ...user, username: e.target.value })}
-            />
-          </div>
-          <div>
-            <input
-              className="border border-slate-400 p-1 rounded-md  w-full"
-              type="text"
-              placeholder="Name"
-              value={user.name}
-              onChange={(e) => setUser({ ...user, name: e.target.value })}
-            />
-          </div>
+            <div>
+              <input
+                className="border border-slate-400 p-1 rounded-md  w-full"
+                type="text"
+                placeholder="Username"
+                value={user.username}
+                onChange={(e) => setUser({ ...user, username: e.target.value })}
+              />
+            </div>
+            <div>
+              <input
+                className="border border-slate-400 p-1 rounded-md  w-full"
+                type="text"
+                placeholder="Name"
+                value={user.name}
+                onChange={(e) => setUser({ ...user, name: e.target.value })}
+              />
+            </div>
           </div>
           <div>
             <input
@@ -97,13 +96,22 @@ export default function SignUp() {
               onChange={(e) => setUser({ ...user, password: e.target.value })}
             />
           </div>
-            <button
-              className="bg-purple-600 p-1 w-full text-white rounded"
-              onClick={input}
-            >
-              Sign Up
-            </button>
-         
+          <button
+            className="bg-purple-600 p-1 w-full text-white rounded"
+            onClick={input}
+          >
+            Sign Up
+          </button>
+
+          <div >
+            <p className="flex  w-full gap-4 items-center text-center justify-center" >
+              Alerady Have Account?{" "}
+              <Link to="/signin">
+                {" "}
+                <p className="text-purple-700 font-medium">Sign In</p>
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
     </>
