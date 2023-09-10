@@ -85,18 +85,16 @@ export default function Login() {
 
     return (
         <>
-            <div className="flex justify-center p-5  ">
-                <div className="flex flex-col bg-white border-2 justify-center items-center gap-5  px-3 font-medium p-5 w-96 h-72  rounded ">
+            <div className="flex flex-col items-center justify-center border-2 h-screen border-blue-300">
+                <div className="bg-slate-50 h-1/2 flex-col flex justify-around gap-3 p-6 w-1/4 ">
 
                     {/* msg */}
                     <div className='text-red-600 font-bold'> {msg}</div>
                     {/* all fields of login  */}
-                    <div className="font-bold self-start ml-5">Sign In</div>
-                    <div><input className="border border-black p-1 rounded  w-80" placeholder='Username' type="text" value={user.username} onChange={(e) => setUser({ ...user, username: e.target.value })} /></div>
-                    <div><input className="border border-black p-1 rounded w-80 " type="text" placeholder='Password' value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} /></div>
-                    <div className="self-center ">
-                        <button className='bg-red-500 border w-28 h-10 text-white rounded' onClick={input}>Login</button>
-                    </div>
+                    <div className="font-medium text-center">Sign In</div>
+                    <div><input className="border border-slate-400 p-1 rounded  w-full" placeholder='Username' type="text" value={user.username} onChange={(e) => setUser({ ...user, username: e.target.value })} /></div>
+                    <div><input className="border border-slate-400 p-1 rounded-md w-full " type="password" placeholder='Password' value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} /></div>
+                        <button className='bg-purple-700 py-1 w-full text-white rounded' onClick={input}>submit</button>
 
                 </div>
             </div>

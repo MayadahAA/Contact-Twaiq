@@ -23,7 +23,7 @@ function Calendar() {
 
   useEffect(() => {
     axios
-      .get('')
+      .get('https://64d8b3c25f9bf5b879ce7999.mockapi.io/p')
       .then((response) => {
         setCalendarData(response.data);
       })

@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
-
+import logo from "../assets/academy-logo.svg";
 
 export default function Navbar() {
     return (
         <>
            
             <nav className="flex justify-center ">
-                <ul className="gap-4 p-3 bg-sky-800 w-full font-bold text-sm  ">
-                    <div className="flex justify-between items-center text-white pl-6 pr-6">
+                <ul className="gap-4 p-3 bg-white w-full font-bold text-sm  ">
+                    <div className="flex justify-between items-center text-slate-800 pl-6 pr-6">
                         <div>
-                            <p className="text-3xl">Web Site</p>
+                            <div><img src={logo} alt="" /></div>
                         </div>
                         
                         <div className="flex gap-4">
