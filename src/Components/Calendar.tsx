@@ -23,7 +23,7 @@ function Calendar() {
 
   useEffect(() => {
     axios
-      .get('')
+      .get("https://64d8b3c25f9bf5b879ce7999.mockapi.io/p")
       .then((response) => {
         setCalendarData(response.data);
       })
@@ -33,35 +33,17 @@ function Calendar() {
   }, []);
 
   return (
-    <div className="flex  gap-10 p-10">
-      <div className=" w-1/12 border-2">
-        <div>
-          <div className="flex flex-col gap-10">
-            {calendarData.map((dayData) => (
-              <button
-                key={dayData.date}
-                onClick={() => handleDayClick(dayData.date)}
-                className={`day ${
-                  selectedDay === dayData.date
-                    ? "border-b-4 border-purple-500 p-1"
-                    : ""
-                }`}
-              >
-                <h1 className="text-lg font-medium text-slate-600 p-3">
-                  {dayData.day}
-                </h1>
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-      <div className="flex border-2 w-6/12">
+    <div className="flex justify-end w-screen ">
+      {/* calendar */}
+      <div className="flex  border-2 w-3/6 ">
         {selectedDay && (
-          <div className="flex flex-col gap-5 w-full justify-start">
-            <h2 className="text-lg font-medium text-slate-600 w-1/4 p-3 ">
+          <div className="flex flex-col gap-5 w-full justify-start bg-slate-50 p-4 rounded-md">
+            {/* selected date */}
+            <h2 className="text-2xl font-medium text-right text-slate-600 w-full p-3 ">
               {selectedDay}
             </h2>
-            <ul className="flex justify-between flex-col gap-5 ">
+
+            <ul className="flex justify-between  flex-col gap-5 ">
               {(
                 calendarData.find((dayData) => dayData.date === selectedDay)
                   ?.hours || []
@@ -76,27 +58,28 @@ function Calendar() {
                   <li>
                     <div
                       key={hourData.time}
-                      className="flex gap-5 border-b-2 p-1"
+                      className="flex gap-5   p-1"
                     >
-                      <span className="text-lg font-medium text-slate-600 w-1/4 p-3 ">
-                        {hourData.time}
-                      </span>{" "}
-                      {hourData.requests && hourData.requests ? (
-                        <ul className="bg-blue-700 text-white font-medium p-3 rounded-md w-full">
+                          {hourData.requests && (
+                        <ul className="bg-purple-700 text-white font-medium p-3 rounded-md w-full">
                           {hourData.requests.map((request) => (
+                            // request card
                             <li
                               key={request.name}
-                              className="flex gap-5 items-center justify-between"
+                              className="flex gap-5 items-center  justify-between "
                             >
-                              <span>{request.name}</span>
-                              <span>{request.duration}</span>
                               {request.topics}
+                              <span>{request.duration}</span>
+                              <span>{request.name}</span>
                             </li>
                           ))}
                         </ul>
-                      ) : (
-                        ""
                       )}
+                      <span className="text-lg flex justify-center font-medium text-slate-600 w-1/4 p-3 ">
+                        {hourData.time}
+                      </span>{" "}
+
+                  
                     </div>
                   </li>
                 ))}
@@ -104,6 +87,33 @@ function Calendar() {
           </div>
         )}
       </div>
+      {/* days */}
+      <div className="w-1/6  border-2">
+        <div>
+          <div className="flex flex-col gap-5 h-full w-full">
+            {calendarData.map((dayData) => (
+              <button
+                key={dayData.date}
+                onClick={() => handleDayClick(dayData.date)}
+                className={` ${
+                  selectedDay === dayData.date
+                    ? "bg-gradient-to-t from-[#91D8DB]  w-full"
+                    : ""
+                }`}
+              >
+                <h1
+                  className={` text-2xl font-medium text-slate-800 p-3 ${
+                    dayData.day === "Friday" ? "hidden" : ""
+                  } ${dayData.day === "Saturday" ? "hidden" : ""}`}
+                >
+                  {dayData.day}
+                </h1>
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+      
     </div>
   );
 }
