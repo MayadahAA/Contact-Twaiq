@@ -81,7 +81,7 @@ function Calendar() {
                       <span className="text-lg font-medium text-slate-600 w-1/4 p-3 ">
                         {hourData.time}
                       </span>{" "}
-                      {hourData.requests && hourData.requests ? (
+                      {hourData.requests && (
                         <ul className="bg-blue-700 text-white font-medium p-3 rounded-md w-full">
                           {hourData.requests.map((request) => (
                             <li
@@ -94,9 +94,8 @@ function Calendar() {
                             </li>
                           ))}
                         </ul>
-                      ) : (
-                        ""
-                      )}
+                      )
+                        }
                     </div>
                   </li>
                 ))}
