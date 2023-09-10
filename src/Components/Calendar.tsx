@@ -33,7 +33,7 @@ function Calendar() {
   }, []);
 
   return (
-    <div className="flex justify-end w-screen ">
+    <div className="flex justify-center ">
       {/* calendar */}
       <div className="flex  border-2 w-3/6 ">
         {selectedDay && (
