@@ -55,7 +55,7 @@ function Instrucards() {
                     alt=""
                     className="rounded-full relative"
                   />
-                  <div className={`  rounded-full w-7 h-7 absolute right-1 bottom-2 border-white border-2 ${e.status === 'not availble' ? 'bg-slate-400' : 'bg-blue-600'}`}>
+                  <div className={`  rounded-full w-7 h-7 absolute right-1 bottom-2 border-white border-2 ${e.status === 'busy' ? 'bg-red-700' : ''} ${e.status === 'availble' ? 'bg-blue-600' : 'bg-slate-500'}`}>
                     
                   </div>
                 </div>
