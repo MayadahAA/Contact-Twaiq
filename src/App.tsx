@@ -10,6 +10,7 @@ import Footer from './Components/Footer'
 import Contact from './Pages/Contact'
 import NotFound from './Pages/NotFound'
 import Settings from './Hooks/Settings'
+import Dashboard from './Hooks/Dashboard'
 function App() {
 
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/login" element={ <Login/> } />
         <Route path="/Register" element={ <SignUp/> } />
         <Route path="/settings" element={ <Settings/> } />
+        <Route path="/dashboard" element={ <Dashboard/> } />
         <Route path="*" element={ <NotFound/> } />
       </Routes>
       <Footer></Footer>

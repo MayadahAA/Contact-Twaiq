@@ -25,7 +25,6 @@ export default function Login() {
         password: '',
         isLogin: ''
 
-
     })
 
     const [getUserApi, setUserApi] = useState<IUser[]>([])
