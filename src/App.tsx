@@ -6,7 +6,7 @@ import Home from './Pages/Home'
 import Navbar from './Components/Navbar'
 import Login from './Hooks/Users/Login'
 import SignUp from './Hooks/Users/SignUp'
-import Footer from './Components/Footer'
+// import Footer from './Components/Footer'
 // import Contact from './Pages/Contact'
 import NotFound from './Pages/NotFound'
 import Settings from './Hooks/Settings'
@@ -28,7 +28,7 @@ function App() {
         <Route path="/request/:userId" element={ <SendRequest/> } />
         <Route path="*" element={ <NotFound/> } />
       </Routes>
-      <Footer></Footer>
+      {/* <Footer></Footer> */}
     </>
   )
 }
