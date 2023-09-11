@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 function Navigation() {
   return (
     <>
-      <div className="flex flex-col items-center justify-center fixed m-10 h-3/4 w-16 rounded-full  bg-white">
+    <div className="h-screen flex items-center flex-col ">
+
+      <div className="flex flex-col items-center justify-center fixed  h-3/4 w-16 rounded-full  bg-white">
         <div className="flex flex-col items-center justify-around h-full w-full">
           <Link to="/">
             <svg
@@ -55,6 +57,7 @@ function Navigation() {
           </Link>
         </div>
       </div>
+    </div>
     </>
   );
 }

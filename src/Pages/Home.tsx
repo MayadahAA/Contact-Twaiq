@@ -4,7 +4,7 @@ import Navigation from "../Components/Navigation";
 export default function Home() {
   return (
     <>
-      <div className="h-fit bg-slate-100">
+      <div className="h-fit pb-80 bg-slate-100">
         <div className="flex justify-center p-5 gap-3  ">
           <div className="w-1/12">
             <Navigation />

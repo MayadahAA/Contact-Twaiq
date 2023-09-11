@@ -79,20 +79,20 @@ function Instrucards() {
             <div key={e.id} className="w-80 h-1/4 flex">
               <div className="h-fit">
                 <div className="h-full rounded-lg shadow-md shadow-slate-300/60 bg-white items-center justify-between gap-5 flex flex-col p-10 text-center">
-                  <div className="w-32 rounded-full relative">
+                  <div className="relative flex flex-col items-center justify-center">
                     <img
+                      className="w-1/2 h-1/2 rounded-full"
                       src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
                       alt=""
-                      className="rounded-full relative"
                     />
-                    <div
-                      className={`rounded-full w-7 h-7 absolute right-1 bottom-2 border-white border-2 ${
-                        e.status === "busy" ? "bg-red-500" : ""
-                      } ${e.status === "available" ? "bg-blue-600" : ""}${
-                        e.status === "not available" ? "bg-slate-500" : ""
-                      }`}
-                    ></div>
+                    <div className={`bottom-0 right-16 absolute  w-7 h-7 border-4 border-white  rounded-full ${e.status === "busy" ? "bg-red-500" : ""
+                    } ${e.status === "available" ? "bg-blue-400" : ""}${
+                      e.status === "not available" ? "bg-slate-500" : ""
+                    }`}>
+
+                    </div>
                   </div>
+              
 
                   <div className="text-center w-3/4 ">
                     <h1> {e.name}</h1>

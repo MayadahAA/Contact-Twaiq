@@ -7,7 +7,7 @@ export default function Navbar() {
     <>
       <nav className="flex justify-center ">
         <ul className="gap-4 p-3 bg-white w-full font-bold text-sm  ">
-          <div className="flex justify-between items-center text-slate-800 pl-6 pr-6">
+          <div className="flex justify-between px-10 items-center text-slate-800 ">
             <div>
                 <Link to='/'>
 
@@ -29,16 +29,10 @@ export default function Navbar() {
                 <li className=""> Sign Up</li>
               </Link> */}
               <Link to='/settings'>
-              <div className="w-12 rounded-full relative ">
-                <img
-                  src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                  alt=""
-                  className="rounded-full relative"
-                />
-                <div
-                  className={`bg-blue-600  rounded-full w-1/4 h-1/4 absolute right-1 bottom-1 border-white border-2`}
-                ></div>
-              </div>
+              <div className="relative">
+    <img className="w-10 h-10 rounded-full" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt=""/>
+    <span className="bottom-0 left-7 absolute  w-3.5 h-3.5 bg-blue-400 border-2 border-white  rounded-full"></span>
+</div>
               </Link>
             </div>
           </div>
