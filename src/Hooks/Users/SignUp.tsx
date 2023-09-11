@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function SignUp() {
-  const url = "https://64ec522df9b2b70f2bfa1874.mockapi.io/api/v1/users";
+  const url = "https://64d8b3c25f9bf5b879ce7999.mockapi.io/users";
   const navigate = useNavigate();
 
   //useState Object

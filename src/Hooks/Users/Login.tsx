@@ -9,11 +9,12 @@ interface IUser {
     username: string,
     password: string,
     email: string,
+    status: string,
 }
 
 export default function Login() {
 
-    const url = "https://64ec522df9b2b70f2bfa1874.mockapi.io/api/v1/users";
+    const url = "https://64d8b3c25f9bf5b879ce7999.mockapi.io/users";
     const navigate = useNavigate();
 
     //useState for Login validation or rejection message
@@ -23,7 +24,9 @@ export default function Login() {
     const [user, setUser] = useState({
         username: '',
         password: '',
-        isLogin: ''
+        isLogin: '',
+        status: ''
+
 
     })
 
@@ -71,6 +74,7 @@ export default function Login() {
                 localStorage.setItem('username', user.username );
                 localStorage.setItem('isLogin', 'true');
                 localStorage.setItem('email', userApi.email);
+                localStorage.setItem('status', userApi.status);
                 // userApi.isLogin = true
 
                 //redirect to Home  page when successful login
