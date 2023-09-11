@@ -3,42 +3,48 @@ import { Link } from "react-router-dom";
 function Navigation() {
   return (
     <>
-      <div className="flex flex-col fixed m-10 h-3/4 w-16 rounded-full  bg-white">
+      <div className="flex flex-col items-center justify-center fixed m-10 h-3/4 w-16 rounded-full  bg-white">
         <div className="flex flex-col items-center justify-around h-full w-full">
           <Link to="/">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              fill="none"
               viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-8 h-8 text-slate-900"
-            >
-              <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
-            </svg>
-          </Link>
-          <Link to="/dashboard">
-            <svg
-              className="w-8 h-8"
-              viewBox="0 0 39 39"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+              strokeWidth={2}
+              stroke="currentColor"
+
+              className="w-8 h-8 text-slate-700"
             >
-              <path
-                d="M12.9167 37.0722H4.47222C2.97843 37.0722 1.75 35.8437 1.75 34.35V4.7944C1.75 3.3006 2.97843 2.07217 4.47222 2.07217H12.9167C14.4105 2.07217 15.6389 3.3006 15.6389 4.7944V34.35C15.6389 35.8437 14.4105 37.0722 12.9167 37.0722ZM34.0278 37.0722H25.5833C24.0895 37.0722 22.8611 35.8437 22.8611 34.35V23.7944C22.8611 22.3006 24.0895 21.0722 25.5833 21.0722H34.0278C35.5216 21.0722 36.75 22.3006 36.75 23.7944V34.35C36.75 35.8437 35.5216 37.0722 34.0278 37.0722ZM36.75 4.7944V11.1277C36.75 12.6215 35.5216 13.85 34.0278 13.85H25.5833C24.0895 13.85 22.8611 12.6215 22.8611 11.1277V4.7944C22.8611 3.3006 24.0895 2.07217 25.5833 2.07217H34.0278C35.5216 2.07217 36.75 3.3006 36.75 4.7944Z"
-                stroke="black"
-                stroke-width="3"
-              />
+              <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
+              <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
             </svg>
           </Link>
+          <button className="">
+            <Link to="/dashboard">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                stroke="currentColor"
+                className="w-8 h-8 text-slate-700 "
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z"
+                />
+              </svg>
+            </Link>
+          </button>
           <Link to="/communinites">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              strokeWidth={1.5}
+              strokeWidth={1.7}
               stroke="currentColor"
-              className="w-8 h-8"
+              className="w-8 h-8 text-slate-700"
             >
               <path
                 strokeLinecap="round"
