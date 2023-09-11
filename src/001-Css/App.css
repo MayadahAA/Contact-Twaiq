@@ -1,0 +1,15 @@
+@font-face {
+    font-family: "Next";
+    src: url(../assets/font/Next.ttf);
+  }
+  @font-face {
+    font-family: "Next bold";
+    src: url(../assets/font/Next-Bold.ttf);
+  }
+  @font-face {
+    font-family: "Next medium";
+    src: url(../assets/font/Next-Medium.ttf);
+  }
+  body{
+    font-family: "Next";
+  }
