@@ -23,8 +23,16 @@ function Instrucards() {
   } catch (error) {
     console.log(error);
   }
-  const searchHandler = instructor.filter((e) =>
-    e.name.toLowerCase().includes(search.toLowerCase())
+
+  const searchHandler = instructor.filter(
+    (e) => {
+
+      const name = e.name ? e.name.toLowerCase() : ""; 
+      const status = e.status ? e.status.toLowerCase() : ""; 
+      return name.includes(search.toLowerCase()) || status.includes(search.toLowerCase());
+
+    }
+  
   );
 
   return (
@@ -47,18 +55,23 @@ function Instrucards() {
               {/* {instructor.map((e) => (
                 <div key={e.id}> */}
               <div className="bg-white items-center gap-5 flex flex-col p-10  text-center ">
-                <div
-                  className="w-32 rounded-full relative "
-                >
+                <div className="w-32 rounded-full relative ">
                   <img
                     src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
                     alt=""
                     className="rounded-full relative"
                   />
-                  <div className={`  rounded-full w-7 h-7 absolute right-1 bottom-2 border-white border-2 ${e.status === 'busy' ? 'bg-red-700' : ''} ${e.status === 'availble' ? 'bg-blue-600' : 'bg-slate-500'}`}>
-                    
-                  </div>
+                  <div
+                    className={`  rounded-full w-7 h-7 absolute right-1 bottom-2 border-white border-2 ${
+                      e.status === "busy" ? "bg-red-700" : ""
+                    } ${
+                      e.status === "not availble"
+                        ? "bg-blue-600"
+                        : "bg-slate-500"
+                    }`}
+                  ></div>
                 </div>
+
                 <div className="text-center">
                   <h1> {e.name}</h1>
                   <h2>{e.field}</h2>
