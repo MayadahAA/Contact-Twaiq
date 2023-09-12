@@ -24,12 +24,14 @@ function Instrucards() {
   const filteredInstructors = instructors.filter((e) => {
     const name = e.name ? e.name.toLowerCase() : "";
     const status = e.status ? e.status.toLowerCase() : "";
+    const role = e.role ? e.role.toLowerCase() : "";
     const topics = e.topics ? e.topics.map((topic) => topic.toLowerCase()) : [];
 
     return (
       name.includes(search.toLowerCase()) ||
       status.includes(search.toLowerCase()) ||
-      topics.some((topic) => topic.includes(search.toLowerCase()))
+      topics.some((topic) => topic.includes(search.toLowerCase())) ||
+      role.includes(search.toLowerCase())
     );
   });
 
