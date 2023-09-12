@@ -35,7 +35,7 @@ function Instrucards() {
     );
   });
 
-  // Sort by status in the desired order
+  // Sort by status order
   const sortedInstructors = [...filteredInstructors].sort((a, b) => {
     const statusOrder = { available: 1, busy: 2, "not available": 3 };
     return statusOrder[a.status] - statusOrder[b.status];
@@ -45,6 +45,12 @@ function Instrucards() {
     <div className="flex flex-col h-fit w-full items-center">
       <div className="flex flex-col w-10/12 gap-5 items-center">
         {/* search input start*/}
+      
+        <div className="p-10  text-slate-800 w-11/12 flex items-center ">
+          <h1 className="text-4xl">المدربين</h1>
+       
+
+        </div>
         <div className="flex justify-end w-11/12 items-center gap-2 p-5">
           <div className="flex items-center gap-2 rounded-md bg-white px-2 border-2 border-slate-400">
             <input
@@ -71,10 +77,6 @@ function Instrucards() {
               </svg>
             </label>
           </div>
-        </div>
-
-        <div className="p-10  text-slate-800 px-24 w-11/12 flex items-center ">
-          <h1 className="text-4xl">المدربين</h1>
         </div>
         <div className="flex flex-wrap justify-center w-11/12 gap-10 ">
           {sortedInstructors.map((e) => (

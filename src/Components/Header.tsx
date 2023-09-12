@@ -19,12 +19,6 @@ export default function Navbar() {
     axios
       .get(`https://64d8b3c25f9bf5b879ce7999.mockapi.io/users`)
       .then((response) => {
-        // const userI = response.data as IUser;
-        // if (userI) {
-        //   setInstructor(userI);
-        // } else {
-        //   console.log(`User with ID ${id} not found.`);
-        // }
         setInstructor(response.data);
       })
       .catch((error) => {
@@ -34,7 +28,7 @@ export default function Navbar() {
 
   const x = instructor.find((e) => e.id == id);
 
-  console.log("------------------" + x?.id);
+  console.log("h" + x?.id);
 
   return (
     <>

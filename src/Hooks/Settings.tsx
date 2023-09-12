@@ -13,6 +13,7 @@ type IUser = {
 
 export default function Settings() {
   const [instructor, setInstructor] = useState<IUser[]>([]);
+
   const [update, setUpdate] = useState(false);
 
   const id = localStorage.getItem("id");
@@ -24,35 +25,34 @@ export default function Settings() {
         setInstructor(response.data);
       })
       .catch((error) => {
-        console.error("Error fetching user data:", error);
+        console.error(error);
       });
   }, [id]);
 
   const x = instructor.find((e) => e.id == id);
+  const [updateStatus, setUpdateStatus] = useState<string>(
+    x?.status || "available"
+  );
 
-  console.log("------------------" + x?.id);
+  console.log(x?.id);
 
   const handleEdit = () => {
     setUpdate(true);
   };
 
-  const handleSave = () => {
-    setUpdate(false);
-  };
-
   const updateUserInfo = () => {
-    const updatedInfo = {
-      id: x?.id, 
-      name: x?.name,
-      username: x?.username,
-      role: x?.role,
-     
-    };
-  
     axios
-      .put(`https://64d8b3c25f9bf5b879ce7999.mockapi.io/users/${x?.id}`, updatedInfo)
-      .then((response) => {
-        setUpdate(false); 
+      .put(`https://64d8b3c25f9bf5b879ce7999.mockapi.io/users/${x?.id}`, {
+        id: x?.id,
+        name: x?.name,
+        username: x?.username,
+        role: x?.role,
+        status: updateStatus,
+      })
+      .then(() => {
+        console.log("se");
+
+        setUpdate(false);
       })
       .catch((error) => {
         console.error(error);
@@ -62,68 +62,140 @@ export default function Settings() {
   return (
     <>
       <div className="h-fit pb-80 bg-slate-100">
-        <div className="flex justify-center p-5 gap-3  ">
+        <div className="flex  justify-center p-5 gap-3  ">
           <div className="w-1/12">
             <Navigation />
           </div>
 
-          <div className="flex flex-col  justify-around w-full">
-            {x && (
-              <div>
-                <div className="w-full h-screen items-center flex justify-center">
-                  <div className="flex flex-col gap-10 justify-center w-2/4 items-center">
-                    <h1>الاعدادات</h1>
-                    {/* avatar start*/}
-                    <div className="w-32 rounded-full relative">
-                      <img
-                        src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                        alt=""
-                        className="rounded-full relative"
-                      />
-                      <div
-                        className={`bottom-0 right-16 absolute  w-7 h-7 border-4 border-white  rounded-full ${
-                          x.status === "busy" ? "bg-red-500" : ""
-                        } ${x.status === "available" ? "bg-blue-400" : ""}${
-                          x.status === "not available" ? "bg-slate-500" : ""
-                        }`}
-                      ></div>
-                    </div>
-                    {/* avatar end */}
-
-                    <div className="flex gap-2 flex-col">
-                      {/* name & username */}
-                      {/* name */}
-                      <div className="flex items-center gap-2">
-                        <input
-                          type="text"
-                          value={x?.name}
-                          className="border p-1 rounded-md"
-                          disabled={!update}
-                          placeholder={x?.id}
-                          onChange={(e) => {
-                            if (update) {
-                              const updatedName = e.target.value;
-                              setInstructor((prevInstructors) => {
-                                const updatedInstructors = prevInstructors.map(
-                                  (instructor) =>
-                                    instructor.id === x?.id
-                                      ? { ...instructor, name: updatedName }
-                                      : instructor
-                                );
-                                return updatedInstructors;
-                              });
-                            }
-                          }}
+          <div className="flex flex-col w-full">
+            <h1 className="text-2xl p-5">الاعدادات</h1>
+            <div className="flex flex-col  justify-around w-full bg-white">
+              {x && (
+                <div>
+                  <div className="w-full h-screen items-center flex justify-center">
+                    <div className="flex flex-col gap-10 justify-center w-2/4 items-center">
+                      {/* avatar start*/}
+                      <div className="w-32 rounded-full relative">
+                        <img
+                          src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                          alt=""
+                          className="rounded-full relative"
                         />
-                        {!update && (
-                          <button onClick={handleEdit}>
+                        <div
+                          className={`bottom-0 right-16 absolute  w-7 h-7 border-4 border-white  rounded-full ${
+                            x.status === "busy" ? "bg-red-500" : ""
+                          } ${x.status === "available" ? "bg-blue-400" : ""}${
+                            x.status === "not available" ? "bg-slate-500" : ""
+                          }`}
+                        ></div>
+                      </div>
+                      {/* avatar end */}
+
+                      <div className="flex gap-2 flex-col">
+                        {/* name & username */}
+                        {/* name */}
+                        <div className="flex items-center gap-2">
+                          <input
+                            type="text"
+                            value={x?.name}
+                            className="border p-1 rounded-md"
+                            disabled={!update}
+                            placeholder={x?.id}
+                            onChange={(e) => {
+                              if (update) {
+                                const updatedName = e.target.value;
+                                setInstructor((prevInstructors) => {
+                                  const updatedInstructors =
+                                    prevInstructors.map((instructor) =>
+                                      instructor.id === x?.id
+                                        ? { ...instructor, name: updatedName }
+                                        : instructor
+                                    );
+                                  return updatedInstructors;
+                                });
+                              }
+                            }}
+                          />
+                          {!update && (
+                            <button onClick={handleEdit}>
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={1.5}
+                                stroke="currentColor"
+                                className="w-6 h-6 text-slate-500 bg-white"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
+                                />
+                              </svg>
+                            </button>
+                          )}
+                        </div>
+                        {/* username */}
+                        <div className="flex items-center gap-2">
+                          <input
+                            type="text"
+                            value={x?.username}
+                            className="border p-1 rounded-md"
+                            disabled={!update}
+                            placeholder={x?.id}
+                            onChange={(e) => {
+                              if (update) {
+                                const updatedUsername = e.target.value;
+                                setInstructor((prevInstructors) => {
+                                  const updatedInstructor = prevInstructors.map(
+                                    (instructor) =>
+                                      instructor.id === x?.id
+                                        ? {
+                                            ...instructor,
+                                            username: updatedUsername,
+                                          }
+                                        : instructor
+                                  );
+                                  return updatedInstructor;
+                                });
+                              }
+                            }}
+                          />
+                          {!update && (
+                            <button onClick={handleEdit}>
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={1.5}
+                                stroke="currentColor"
+                                className="w-6 h-6 text-slate-500 bg-white"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
+                                />
+                              </svg>
+                            </button>
+                          )}
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <input
+                            type="text"
+                            value={x?.role}
+                            className="border p-1 rounded-md"
+                            disabled
+                            placeholder={x?.id}
+                          />
+                          <button>
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               fill="none"
                               viewBox="0 0 24 24"
                               strokeWidth={1.5}
                               stroke="currentColor"
-                              className="w-6 h-6 text-slate-500 bg-white"
+                              className="w-6 h-6 text-slate-500"
                             >
                               <path
                                 strokeLinecap="round"
@@ -132,102 +204,67 @@ export default function Settings() {
                               />
                             </svg>
                           </button>
-                        )}
+                        </div>
                       </div>
-                      {/* username */}
-                      <div className="flex items-center gap-2">
-                        <input
-                          type="text"
-                          value={x?.username}
-                          className="border p-1 rounded-md"
-                          disabled
-                          placeholder={x?.id}
-                        />
-                        <button>
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={1.5}
-                            stroke="currentColor"
-                            className="w-6 h-6 text-slate-500"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
-                            />
-                          </svg>
+
+                      {/* status start*/}
+                      <h1 className="text-right w-1/2 font-medium text-slate-600 text-lg">
+                        الحالة:
+                      </h1>
+                      <div className="flex items-center justify-center gap-10">
+                        {/* available */}
+                        <h1 className="font-medium text-slate-700">متاح:</h1>
+                        <button
+                          value="available"
+                          onClick={() => setUpdateStatus("available")}
+                          className={`bg-blue-600  rounded-full w-7 h-7 border-white border-2 ${
+                            updateStatus === "available"
+                              ? "ring-2 ring-blue-500"
+                              : ""
+                          }`}
+                        ></button>
+
+                        {/* busy */}
+                        <h1 className="font-medium text-slate-700">مشغول:</h1>
+                        <button
+                          value="busy"
+                          onClick={() => setUpdateStatus("busy")}
+                          className={`bg-red-600  rounded-full w-7 h-7 border-white border-2 ${
+                            updateStatus === "busy" ? "ring-2 ring-red-500" : ""
+                          }`}
+                        ></button>
+
+                        {/* not available */}
+                        <h1 className="font-medium text-slate-700">
+                          غير متاح:
+                        </h1>
+                        <button
+                          value="not available"
+                          onClick={() => setUpdateStatus("not available")}
+                          className={`bg-slate-400  rounded-full w-7 h-7 border-white border-2 ${
+                            updateStatus === "not available"
+                              ? "ring-2 ring-slate-400"
+                              : ""
+                          }`}
+                        ></button>
+                      </div>
+                      {/* status end*/}
+                      <div>
+                        <button
+                          onClick={updateUserInfo}
+                          className="bg-purple-600 rounded-md text-white font-medium p-2 px-5"
+                        >
+                          save
+                        </button>
+                        <button className="bg-slate-100 rounded-md text-slate-800 font-medium p-2 px-5">
+                          cancel
                         </button>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <input
-                          type="text"
-                          value={x?.role}
-                          className="border p-1 rounded-md"
-                          disabled
-                          placeholder={x?.id}
-                        />
-                        <button>
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={1.5}
-                            stroke="currentColor"
-                            className="w-6 h-6 text-slate-500"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
-                            />
-                          </svg>
-                        </button>
-                      </div>
-                    </div>
-                    {/* status start*/}
-                    <h1 className="text-right w-1/2 font-medium text-slate-600 text-lg">
-                      الحالة:
-                    </h1>
-                    <div className="flex items-center justify-center gap-10">
-                      {/* available */}
-                      <h1 className="font-medium text-slate-700">متاح:</h1>
-                      <button
-                        className={`bg-blue-600  rounded-full w-7 h-7 border-white border-2 focus:ring-2`}
-                      ></button>
-
-                      {/* busy */}
-                      <h1 className="font-medium text-slate-700">مشغول:</h1>
-
-                      <button
-                        value={x?.status}
-                        className={`bg-red-500  rounded-full w-7 h-7 border-white border-2 focus:ring-2`}
-                      ></button>
-
-                      {/* not available */}
-                      <h1 className="font-medium text-slate-700">غير متاح:</h1>
-
-                      <button
-                        className={`bg-slate-400  rounded-full w-7 h-7 border-white border-2 focus:ring-2`}
-                      ></button>
-                    </div>
-                    {/* status end*/}
-                    <div>
-                      <button
-                        onClick={updateUserInfo}
-                        className="bg-purple-600 rounded-md text-white font-medium p-2 px-5"
-                      >
-                        save
-                      </button>
-                      <button className="bg-slate-100 rounded-md text-slate-800 font-medium p-2 px-5">
-                        cancel
-                      </button>
                     </div>
                   </div>
                 </div>
-              </div>
-            )}{" "}
+              )}{" "}
+            </div>
           </div>
         </div>
       </div>
