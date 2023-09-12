@@ -34,7 +34,7 @@ function Calendar() {
 
   return (
     <div className=" flex justify-center">
-      <div className="flex justify-center w-4/6 h-2/6 border bg-white">
+      <div className="flex justify-center w-4/6 h-2/6  shadow-md shadow-slate-300 rounded-md bg-white">
  {/* days */}
  <div className="w-2/6  pb-5 scrollbar overflow-auto">
         <div>
