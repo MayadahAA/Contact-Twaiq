@@ -9,6 +9,7 @@ type IUser = {
   role: string;
   topics: string[];
   status: string;
+  description: string;
 };
 
 export default function Settings() {
@@ -48,6 +49,7 @@ export default function Settings() {
         username: x?.username,
         role: x?.role,
         status: updateStatus,
+        description: x?.description,
       })
       .then(() => {
         console.log("se");
@@ -60,24 +62,27 @@ export default function Settings() {
   };
 
   const logout = () => {
-    localStorage.removeItem('id')
+    localStorage.removeItem("id");
     location.href = "/signin";
-  }
+  };
 
   return (
     <>
       <div className="h-fit pb-80 bg-slate-100">
-        <div className="flex  justify-center p-5 gap-3  ">
-          <div className="w-1/12">
+        <div className="flex  justify-center p-5 gap-3 ">
+          <div className="w-2/12">
             <Navigation />
           </div>
 
           <div className="flex flex-col w-full">
             <h1 className="text-2xl p-5">الاعدادات</h1>
             <div className="flex flex-col  justify-around w-full bg-white">
+              <div className=" justify-center items-center w-full md:inset-0 md:h-full">
+<div className=" p-4 w-full max-w-2xl h-full md:h-auto">
+
               {x && (
                 <div>
-                  <div className="w-full h-screen items-center flex justify-center">
+                  <div className="w-full sm:w-2/3 md:w-1/2 lg:w-2/5 xl:w-1/3 mx-auto">
                     <div className="flex flex-col gap-10 justify-center w-2/4 items-center">
                       {/* avatar start*/}
                       <div className="w-32 rounded-full relative">
@@ -96,16 +101,32 @@ export default function Settings() {
                       </div>
                       {/* avatar end */}
 
-                      <div className="flex gap-2 flex-col">
-                        {/* name & username */}
+                      <div className="flex gap-2 flex-col w-96">
+                        {/* user info */}
+                        <button onClick={handleEdit}>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="w-6 h-6 text-slate-500"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
+                            />
+                          </svg>
+                        </button>
                         {/* name */}
                         <div className="flex items-center gap-2">
                           <input
                             type="text"
                             value={x?.name}
-                            className="border p-1 rounded-md"
+                            className="border p-1 rounded-md w-full"
                             disabled={!update}
-                            placeholder={x?.id}
+                            placeholder={x?.name}
                             onChange={(e) => {
                               if (update) {
                                 const updatedName = e.target.value;
@@ -121,33 +142,15 @@ export default function Settings() {
                               }
                             }}
                           />
-                          {!update && (
-                            <button onClick={handleEdit}>
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth={1.5}
-                                stroke="currentColor"
-                                className="w-6 h-6 text-slate-500 bg-white"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
-                                />
-                              </svg>
-                            </button>
-                          )}
                         </div>
                         {/* username */}
                         <div className="flex items-center gap-2">
                           <input
                             type="text"
                             value={x?.username}
-                            className="border p-1 rounded-md"
+                            className="border p-1 rounded-md w-full"
                             disabled={!update}
-                            placeholder={x?.id}
+                            placeholder={x?.username}
                             onChange={(e) => {
                               if (update) {
                                 const updatedUsername = e.target.value;
@@ -166,49 +169,83 @@ export default function Settings() {
                               }
                             }}
                           />
-                          {!update && (
-                            <button onClick={handleEdit}>
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth={1.5}
-                                stroke="currentColor"
-                                className="w-6 h-6 text-slate-500 bg-white"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
-                                />
-                              </svg>
-                            </button>
-                          )}
                         </div>
                         <div className="flex items-center gap-2">
                           <input
                             type="text"
                             value={x?.role}
-                            className="border p-1 rounded-md"
-                            disabled
-                            placeholder={x?.id}
+                            className="border p-1 rounded-md w-full"
+                            disabled={!update}
+                            placeholder={x?.role}
+                            onChange={(e) => {
+                              if (update) {
+                                const updatedRole = e.target.value;
+                                setInstructor((prevInstructors) => {
+                                  const updatedInstructor = prevInstructors.map(
+                                    (instructor) =>
+                                      instructor.id === x?.id
+                                        ? {
+                                            ...instructor,
+                                            role: updatedRole,
+                                          }
+                                        : instructor
+                                  );
+                                  return updatedInstructor;
+                                });
+                              }
+                            }}
                           />
-                          <button>
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              strokeWidth={1.5}
-                              stroke="currentColor"
-                              className="w-6 h-6 text-slate-500"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
-                              />
-                            </svg>
-                          </button>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <input
+                            type="text"
+                            value={x?.topics}
+                            className="border p-1 rounded-md w-full"
+                            disabled={!update}
+                            onChange={(e) => {
+                              if (update) {
+                                const updatedTopics = e.target.value;
+                                const topicsA = updatedTopics.split(", ");
+                                setInstructor((prevInstructors) => {
+                                  const updatedInstructor = prevInstructors.map(
+                                    (instructor) =>
+                                      instructor.id === x?.id
+                                        ? {
+                                            ...instructor,
+                                            topics: topicsA,
+                                          }
+                                        : instructor
+                                  );
+                                  return updatedInstructor;
+                                });
+                              }
+                            }}
+                          />
+                        </div>
+                        <div className="flex items-center gap-2 ">
+                          <textarea
+                            value={x?.description}
+                            className="border p-1 rounded-md w-full"
+                            disabled={!update}
+                            placeholder={x?.description}
+                            onChange={(e) => {
+                              if (update) {
+                                const updatedDescription = e.target.value;
+                                setInstructor((prevInstructors) => {
+                                  const updatedInstructor = prevInstructors.map(
+                                    (instructor) =>
+                                      instructor.id === x?.id
+                                        ? {
+                                            ...instructor,
+                                            description: updatedDescription,
+                                          }
+                                        : instructor
+                                  );
+                                  return updatedInstructor;
+                                });
+                              }
+                            }}
+                          />
                         </div>
                       </div>
 
@@ -265,14 +302,14 @@ export default function Settings() {
                           cancel
                         </button>
 
-                        <button onClick={logout}>
-                          logout
-                        </button>
+                        <button onClick={logout}>logout</button>
                       </div>
                     </div>
                   </div>
                 </div>
               )}{" "}
+</div>
+              </div>
             </div>
           </div>
         </div>
