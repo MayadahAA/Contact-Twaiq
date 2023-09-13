@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 interface IRequest {
   id: string;
@@ -18,15 +19,15 @@ interface IUser {
   username: string;
 }
 
-const url = "https://64d8b3c25f9bf5b879ce7999.mockapi.io/p";
+const url = "https://64ec522df9b2b70f2bfa1874.mockapi.io/api/v1/request";
 
 export default function RequestCard() {
   const [instructor, setInstructor] = useState<IUser[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [request, setRequest] = useState<IRequest[]>([]);
 
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(!open);
+//   const [open, setOpen] = useState(false);
+//   const handleOpen = () => setOpen(!open);
 
   try {
     useEffect(() => {
@@ -63,7 +64,6 @@ export default function RequestCard() {
   const Instructor = instructor.find((e) => e.id == localId);
   const isInstructor = Instructor?.isInstructor;
 
-  console.log(isInstructor);
 
   // Delete Request
   const DeleteBtn = (id: string) => {
@@ -230,7 +230,7 @@ export default function RequestCard() {
                       </>
                     )}
 
-                    <button className="w-full" onClick={handleOpen}>
+                    <Link to={`/BookRequest/${e.id}`} className="w-full" >
                       <div
                         className="flex justify-between m-5 text-black"
                         key={e.id}
@@ -251,7 +251,7 @@ export default function RequestCard() {
                           </div>
                         )}
                       </div>
-                    </button>
+                    </Link>
                   </div>
                 </>
               ))

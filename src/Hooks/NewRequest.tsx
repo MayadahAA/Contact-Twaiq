@@ -51,7 +51,7 @@ export default function NewRequest() {
             <div className="flex flex-col bg-white border-2 justify-center items-center gap-5  px-3 font-medium p-5 w-96 h-full  rounded ">
 
                     {/* fields of New Request  */}
-                    <div className="font-bold self-start ml-5">New Request</div>
+                    <div className="font-bold self-start ml-5">طلب جديد</div>
                     <div><input className="border border-black p-1 rounded w-80" type="date"  value={requests.date} onChange={(e) => setRequest({ ...requests, date: e.target.value })} /></div>
                     <div><input className="border border-black p-1 rounded w-80" type="text" value={requests.description} onChange={(e) => setRequest({ ...requests, description: e.target.value })} /></div>
                     <div className="self-center ">

@@ -12,6 +12,7 @@ import Admin from './Hooks/Users/Admin'
 import Communities from './Pages/Communities'
 import NewSession from './Hooks/NewSession'
 import Dashboard from './Pages/Dashboard'
+import BookRequest from './Hooks/BookRequest'
 function App() {
   
   return (
@@ -28,6 +29,7 @@ function App() {
         {/* <Route path="/requestDetails/:userId" element={ <RequestDetails/> } />
         <Route path="/instructorDetails/:userId" element={ <InstructorDetails/> } /> */}
         <Route path="/request/:userId" element={ <SendRequest/> } />
+        <Route path="/BookRequest/:userId" element={ <BookRequest/> } />
         <Route path="/Newsession" element={ <NewSession/> } />
         <Route path="/admin" element={ <Admin/> } />
         <Route path="*" element={ <NotFound/> } />
