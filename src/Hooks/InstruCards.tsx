@@ -140,6 +140,7 @@ function Instrucards() {
         </div>
         {/* cards end*/}
       </div>
+}
     </div>
   );
 }

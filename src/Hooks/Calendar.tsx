@@ -2,16 +2,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 interface CalendarDataItem {
+  id: string;
   date: string;
   day: string;
-  hours: {
-    time: string;
-    requests?: {
-      name: string;
-      duration: string;
-      topics: string[];
-    }[];
-  }[];
+  time: string;
+  name: string;
+  duration: string;
+  description: string;
 }
 function Calendar() {
   const [selectedDay, setSelectedDay] = useState<string | null>(null);

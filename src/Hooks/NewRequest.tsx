@@ -3,16 +3,13 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 interface CalendarDataItem {
-  date: string;
+  id: string;
+  date?: string;
   day: string;
-  hours: {
-    time: string;
-    requests?: {
-      name: string;
-      duration: string;
-      topics: string[];
-    }[];
-  }[];
+  time: string;
+  name: string;
+  duration: string;
+  description: string;
 }
 export default function NewRequest() {
   const url = "https://64d8b3c25f9bf5b879ce7999.mockapi.io/p";
@@ -22,24 +19,7 @@ export default function NewRequest() {
   console.log(userId);
 
   //useState Object of request
-  const [requests, setRequest] = useState<CalendarDataItem[]>([
-    {
-      date: "",
-      day: "",
-      hours: [
-        {
-          time: "",
-          requests: [
-            {
-              name: "",
-              duration: "",
-              topics: [],
-            },
-          ],
-        },
-      ],
-    },
-  ]);
+  const [request, setRequest] = useState<CalendarDataItem>([]);
 
   const id = localStorage.getItem("id");
 
@@ -49,10 +29,11 @@ export default function NewRequest() {
       //post Request to EndPoint
       axios
         .post(url, {
-          date: requests.date,
+          date: request.date,
           userId: id,
           trainerId: userId,
-          description: requests.description,
+          name: id.name,
+          description: request.description,
           approval: false,
         })
         .then(function (response) {
@@ -61,7 +42,7 @@ export default function NewRequest() {
     } catch (Error) {
       console.error();
     }
-    setRequest({ ...requests, description: "" });
+    setRequest({ ...request, description: "", date: "" });
     alert("ok");
   };
 
@@ -75,9 +56,9 @@ export default function NewRequest() {
             <input
               className="border border-black p-1 rounded w-80"
               type="date"
-              value={requests.date}
+              value={request.date}
               onChange={(e) =>
-                setRequest({ ...requests, date: e.target.value })
+                setRequest({ ...request, date: e.target.value })
               }
             />
           </div>
@@ -85,22 +66,14 @@ export default function NewRequest() {
             <input
               className="border border-black p-1 rounded w-80"
               type="text"
-              value={requests.description}
+              value={request.description}
               onChange={(e) =>
-                setRequest({ ...requests, description: e.target.value })
+                setRequest({ ...request, description: e.target.value })
               }
             />
-          </div>
-          <div className="self-center ">
-            <button
-              className="bg-red-500 border w-28 h-10 text-white rounded"
-              onClick={input}
-            >
-              Send
-            </button>
           </div>
 
-          <div>
+          {/* <div>
             <input
               className="border border-black p-1 rounded w-80"
               type="text"
@@ -109,7 +82,7 @@ export default function NewRequest() {
                 setRequest({ ...requests, description: e.target.value })
               }
             />
-          </div>
+          </div> */}
           <div className="self-center ">
             <button
               className="bg-red-500 border w-28 h-10 text-white rounded"
