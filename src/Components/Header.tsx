@@ -12,6 +12,13 @@ type IUser = {
   status: string;
 };
 export default function Navbar() {
+
+  // const user = localStorage.getItem('id')
+
+  // const logout = () => {
+  //   localStorage.clear()
+  //   location.href = '/login'
+  // }
   const [instructor, setInstructor] = useState<IUser[]>([]);
   const id = localStorage.getItem("id");
 
