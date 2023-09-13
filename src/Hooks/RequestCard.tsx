@@ -19,9 +19,12 @@ interface IUser {
     username: string;
 }
 
-const url = "https://64ec522df9b2b70f2bfa1874.mockapi.io/api/v1/request";
+const urlRequest = "https://64ec522df9b2b70f2bfa1874.mockapi.io/api/v1/request";
 
 export default function RequestCard() {
+
+
+
     const [instructor, setInstructor] = useState<IUser[]>([]);
     const [isLoading, setIsLoading] = useState(false);
     const [request, setRequest] = useState<IRequest[]>([]);
@@ -45,7 +48,7 @@ export default function RequestCard() {
     try {
         useEffect(() => {
             setIsLoading(true);
-            axios.get(url).then((response) => {
+            axios.get(urlRequest).then((response) => {
                 setRequest(response.data);
                 setIsLoading(false);
             });
@@ -57,7 +60,9 @@ export default function RequestCard() {
     //filter request by user id or trainer id
     const localId = localStorage.getItem("id");
     const requestFilter = request.filter((e) =>
-        e.userId == localId ? e.userId == localId : e.trainerId == localId
+        e.userId == localId ? 
+            e.userId == localId :
+                 e.trainerId == localId
     );
 
     //chick user if Instructor
@@ -69,7 +74,7 @@ export default function RequestCard() {
     const DeleteBtn = (id: string) => {
         const confirmAction = confirm("هل تريد حذف الطلب");
         if (confirmAction) {
-            axios.delete(url + "/" + id).then(() => {
+            axios.delete(urlRequest + "/" + id).then(() => {
                 setRequest(
                     request.filter((del) => {
                         return del.id !== id;
@@ -83,13 +88,13 @@ export default function RequestCard() {
 
     const input = (check: string, id: string) => {
         if (check === "true") {
-            axios.put(url + "/" + id, {
+            axios.put(urlRequest + "/" + id, {
                 approval: "تم القبول",
             });
         } else if (check === "false") {
             const confirmAction = confirm("هل تريد رفض الطلب");
             if (confirmAction) {
-                axios.put(url + "/" + id, {
+                axios.put(urlRequest + "/" + id, {
                     approval: "مرفوض",
                 });
             } else {
