@@ -2,7 +2,7 @@
 import './001-Css/App.css'
 import { Routes, Route } from "react-router-dom"
 import Home from './Pages/Home'
-import Navbar from './Components/Header'
+import Header from './Components/Header'
 import Login from './Hooks/Users/Login'
 import SignUp from './Hooks/Users/SignUp'
 import NotFound from './Pages/NotFound'
@@ -16,7 +16,7 @@ function App() {
   
   return (
     <>
-    <Navbar></Navbar>
+    <Header></Header>
     <Routes>
         <Route path="/" element={ <Home/> } />
         <Route path="/dashboard" element={ <Dashboard/> } />
