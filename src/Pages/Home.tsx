@@ -8,7 +8,7 @@ export default function Home() {
     null
   } else {
     alert("Please Login")
-    location.href = '/login'
+    location.href = '/signup'
   }
   return (
     <>
