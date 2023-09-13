@@ -51,25 +51,21 @@ function Instrucards() {
 
   return (
     <div className="flex flex-col h-fit w-full items-center">
-      {
-        isLoading ? (
-          <div className="flex justify-center items-center">
-            <div className="spinner"></div>
-          </div>
-        ) :
-          <div className="flex flex-col w-10/12 gap-5 items-center">
-            {/* search input start*/}
-
-            <div className="p-10  text-slate-800 w-11/12 flex items-center ">
-              <h1 className="text-4xl">المدربين</h1>
-
-
+    {isLoading ? (
+      <div className="flex justify-center items-center">
+        <div className="spinner"></div>
+      </div>
+    ) : (
+      <div className="flex flex-col w-10/12 gap-5 items-center">
+        {/* search input start*/}
+        <div className="p-10  text-slate-800 w-11/12 flex items-center">
+          <h1 className="text-4xl">المدربين</h1>
         </div>
         <div className="flex justify-end w-11/12 items-center gap-2 p-5">
           <div className="flex items-center gap-2 rounded-md bg-white px-2 border-2 border-slate-400">
             <input
               type="text"
-              className="p-2 rounded-md outline-none "
+              className="p-2 rounded-md outline-none"
               placeholder="بحث"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
@@ -92,9 +88,9 @@ function Instrucards() {
             </label>
           </div>
         </div>
-        <div className="flex flex-wrap justify-center w-11/12 gap-10 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-10 w-11/12">
           {sortedInstructors.map((e) => (
-            <div key={e.id} className="w-80 h-1/4 flex">
+            <div key={e.id} className="w-full flex">
               <div className="h-fit">
                 <div className="h-full rounded-lg shadow-md shadow-slate-300/60 bg-white items-center justify-between gap-5 flex flex-col p-10 text-center">
                   <div className="relative flex flex-col items-center justify-center">
@@ -103,15 +99,16 @@ function Instrucards() {
                       src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
                       alt=""
                     />
-                    <div className={`bottom-0 right-16 absolute  w-7 h-7 border-4 border-white  rounded-full ${e.status === "busy" ? "bg-red-500" : ""
-                    } ${e.status === "available" ? "bg-blue-400" : ""}${
-                      e.status === "not available" ? "bg-slate-500" : ""
-                    }`}>
-
-                        </div>
-                      </div>
-
-
+                    <div
+                      className={`bottom-0 right-16 absolute w-7 h-7 border-4 border-white rounded-full ${
+                        e.status === "busy" ? "bg-red-500" : ""
+                      } ${
+                        e.status === "available" ? "bg-blue-400" : ""
+                      }${
+                        e.status === "not available" ? "bg-slate-500" : ""
+                      }`}
+                    ></div>
+                  </div>
                   <div className="text-center w-3/4 ">
                     <h1> {e.name}</h1>
                     <h2>{e.role}</h2>
@@ -140,8 +137,10 @@ function Instrucards() {
         </div>
         {/* cards end*/}
       </div>
-}
-    </div>
+    )}
+  </div>
+  
+  
   );
 }
 
