@@ -59,6 +59,11 @@ export default function Settings() {
       });
   };
 
+  const logout = () => {
+    localStorage.removeItem('id')
+    location.href = "/signin";
+  }
+
   return (
     <>
       <div className="h-fit pb-80 bg-slate-100">
@@ -258,6 +263,10 @@ export default function Settings() {
                         </button>
                         <button className="bg-slate-100 rounded-md text-slate-800 font-medium p-2 px-5">
                           cancel
+                        </button>
+
+                        <button onClick={logout}>
+                          logout
                         </button>
                       </div>
                     </div>

@@ -81,21 +81,21 @@ function Calendar() {
                   const timeB = b.time.toLowerCase();
                   return timeA.localeCompare(timeB);
                 })
-                .map((hourData) => (
+                .map((reqData) => (
                   <li className="border-2 p-2 rounded-sm">
                     
                     <div
-                      key={hourData.time}
+                      key={reqData.time}
                       className="flex p-1"
                     >
                           <span className="text-xl  flex justify-center font-semibold text-slate-600 w-1/4 p-3 ">
-                        {hourData.time}
+                        {reqData.time}
                       </span>{" "}
 
                   
-                          {hourData.requests && (
+                          {reqData.requests && (
                         <ul className=" border bg-cyan-800/10 border-cyan-900/20 text-slate-600 font-medium p-3 rounded-md w-full">
-                          {hourData.requests.map((request) => (
+                          {reqData.requests.map((request) => (
                             // request card
                             <li
                               key={request.name}

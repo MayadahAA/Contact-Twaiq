@@ -78,12 +78,13 @@ function Instrucards() {
             </label>
           </div>
         </div>
-        <div className="flex flex-wrap justify-center w-11/12 gap-10 ">
+        {/* cards */}
+        <div className="flex flex-wrap justify-center w-11/12 gap-5 ">
           {sortedInstructors.map((e) => (
-            <div key={e.id} className="w-80 h-1/4 flex">
-              <div className="h-fit">
-                <div className="h-full rounded-lg shadow-md shadow-slate-300/60 bg-white items-center justify-between gap-5 flex flex-col p-10 text-center">
-                  <div className="relative flex flex-col items-center justify-center">
+            <div key={e.id} className="w-80 sm:w-72 h-1/4 sm:h-fit flex">
+              <div className="h-fit w-fit">
+                <div className=" rounded-lg shadow-md shadow-slate-300/60 bg-white items-center justify-between  flex flex-col w-80 h-96 p-8 text-center">
+                  <div className="relative flex flex-col items-center justify-center w-1/2 h-1/2">
                     <img
                       className="w-1/2 h-1/2 rounded-full"
                       src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
@@ -102,8 +103,8 @@ function Instrucards() {
                     <h1> {e.name}</h1>
                     <h2>{e.role}</h2>
                   </div>
-                  <div className="flex flex-wrap w-5/6 h-1/2 gap-2 text-center items-center justify-center">
-                    <div className=" flex flex-wrap gap-2 items-center justify-center">
+                  <div className="flex flex-wrap w-5/6 h-1/4 gap-2 text-center items-center justify-center">
+                    <div className=" flex flex-wrap  gap-2 items-center justify-center">
                       {e.topics.map((topic) => (
                         <h3 key={topic}>
                           <h3 className="bg-purple-100 rounded-full p-1 px-3 text-sm font-medium text-slate-800">
