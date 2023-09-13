@@ -1,15 +1,36 @@
 @font-face {
-    font-family: "Next";
-    src: url(../assets/font/Next.ttf);
+  font-family: "Next";
+  src: url(../assets/font/Next.ttf);
+}
+@font-face {
+  font-family: "Next bold";
+  src: url(../assets/font/Next-Bold.ttf);
+}
+@font-face {
+  font-family: "Next medium";
+  src: url(../assets/font/Next-Medium.ttf);
+}
+body{
+  font-family: "Next";
+}
+
+
+.spinner {
+  width: 64px;
+  height: 64px;
+  border: 8px solid;
+  border-color: #3d5af1 transparent #3d5af1 transparent;
+  border-radius: 50%;
+  animation: spin-anim 1.2s linear infinite;
+}
+
+@keyframes spin-anim {
+  0% {
+      transform: rotate(0deg);
   }
-  @font-face {
-    font-family: "Next bold";
-    src: url(../assets/font/Next-Bold.ttf);
+  100% {
+      transform: rotate(360deg);
   }
-  @font-face {
-    font-family: "Next medium";
-    src: url(../assets/font/Next-Medium.ttf);
-  }
-  body{
-    font-family: "Next";
-  }
+}
+
+

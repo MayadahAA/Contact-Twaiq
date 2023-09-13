@@ -39,7 +39,7 @@ function Navigation() {
               </svg>
             </Link>
           </button>
-          <Link to="/communinites">
+          <Link to="/Communities">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
