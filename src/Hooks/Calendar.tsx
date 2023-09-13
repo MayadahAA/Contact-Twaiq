@@ -49,7 +49,7 @@ function Calendar() {
 
         <div className="flex justify-center w-full h-2/6  shadow-md shadow-slate-300 rounded-md bg-white">
           {/* days */}
-          <div className="w-2/6  pb-5 scrollbar overflow-auto">
+          <div className="w-2/6  scrollbar overflow-auto">
             <div>
               <div className="flex flex-col gap-5 h-full w-full">
                 {calendarData.map((dayData) => (
@@ -73,7 +73,7 @@ function Calendar() {
             </div>
           </div>
           {/* calendar */}
-          <div className="flex w-full ">
+          <div className="flex w-3/4 ">
             {selectedDay && (
               <div className="flex flex-col gap-5 w-full justify-start  p-4 rounded-md">
                 {/* selected date */}

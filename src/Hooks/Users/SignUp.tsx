@@ -39,7 +39,9 @@ export default function SignUp() {
           password: user.password,
           name: user.name,
           status: "not availble",
-          description: ""
+          description: "",
+          role: "",
+          topics: [],
         })
         .then(function (response) {
           console.log(response);
@@ -54,65 +56,84 @@ export default function SignUp() {
   return (
     <>
       <div className="flex flex-col items-center justify-center border-2 h-screen bg-slate-200">
-        <div className="bg-white shadow-sm h-1/2 flex-col flex justify-around gap-3 p-10 w-1/4 rounded-lg">
-          {/* msg */}
-          <div className="text-red-600 font-bold"> {msg}</div>
-          {/* all fields of sign up  */}
-          <div className="font-medium text-center">Sign Up</div>
-          <div className="flex gap-3">
-            <div>
-              <input
-                className="border border-slate-400 p-1 rounded-md  w-full"
-                type="text"
-                placeholder="Username"
-                value={user.username}
-                onChange={(e) => setUser({ ...user, username: e.target.value })}
-              />
+        <div className="w-full bg-white rounded-lg shadow  md:mt-0 sm:max-w-md xl:p-0 ">
+          <div className="p-6 space-y-4 md:space-y-6 sm:p-8 ">
+            {/* msg */}
+            <div className="text-red-600 font-bold"> {msg}</div>
+            {/* all fields of sign up  */}
+            <div className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl ">
+              انشاء حساب
+            </div>
+            <div className="space-y-4 md:space-y-6">
+              <div>
+                <label className="block mb-2 text-sm font-medium text-gray-900 ">
+                  اسم المستخدم{" "}
+                </label>
+                <input
+                  className="border border-slate-400 p-2 rounded-sm  w-full"
+                  type="text"
+                  placeholder="@"
+                  value={user.username}
+                  onChange={(e) =>
+                    setUser({ ...user, username: e.target.value })
+                  }
+                />
+              </div>
+              <div>
+              <label className="block mb-2 text-sm font-medium text-gray-900 ">
+                  الاسم{" "}
+                </label>
+                <input
+                  className="border border-slate-400 p-2 rounded-sm  w-full"
+                  type="text"
+                  placeholder="احمد محمد"
+                  value={user.name}
+                  onChange={(e) => setUser({ ...user, name: e.target.value })}
+                />
+              </div>
             </div>
             <div>
-              <input
-                className="border border-slate-400 p-1 rounded-md  w-full"
-                type="text"
-                placeholder="Name"
-                value={user.name}
-                onChange={(e) => setUser({ ...user, name: e.target.value })}
-              />
-            </div>
-          </div>
-          <div>
-            <input
-              className="border border-slate-400 p-1 rounded-md  w-full"
-              type="email"
-              placeholder="Email"
-              required
-              value={user.email}
-              onChange={(e) => setUser({ ...user, email: e.target.value })}
-            />
-          </div>
-          <div>
-            <input
-              className="border border-slate-400 p-1 rounded-md  w-full"
-              type="password"
-              placeholder="Password"
-              value={user.password}
-              onChange={(e) => setUser({ ...user, password: e.target.value })}
-            />
-          </div>
-          <button
-            className="bg-purple-600 p-1 w-full text-white rounded"
-            onClick={input}
-          >
-            Sign Up
-          </button>
+              <label className="block mb-2 text-sm font-medium text-gray-900 ">
+                البريد الالكتروني
+              </label>
 
-          <div >
-            <p className="flex  w-full gap-4 items-center text-center justify-center" >
-              Alerady Have Account?{" "}
-              <Link to="/signin">
-                {" "}
-                <p className="text-purple-700 font-medium">Sign In</p>
-              </Link>
-            </p>
+              <input
+                className="border border-slate-400 p-2 rounded-sm  w-full"
+                type="email"
+                placeholder="name@example.com "
+                required
+                value={user.email}
+                onChange={(e) => setUser({ ...user, email: e.target.value })}
+              />
+            </div>
+            <div>
+            <label className="block mb-2 text-sm font-medium text-gray-900 ">
+                  كلمة المرور{" "}
+                </label>
+              <input
+                className="border border-slate-400 p-2 rounded-sm  w-full"
+                type="password"
+                placeholder="••••••••"                value={user.password}
+                onChange={(e) => setUser({ ...user, password: e.target.value })}
+              />
+            </div>
+            <button
+            type="submit"
+             className=" w-full text-white bg-cyan-500 hover:bg-primary-700  focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 "
+              onClick={input}
+            >
+          انشئ الحساب
+            </button>
+
+            <div>
+              <p className="flex gap-2 text-sm font-light text-gray-500 dark:text-gray-400">
+                هل لديك حساب مسبق؟{" "}
+                <Link to="/signin">
+                  {" "}
+                  <p className="text-cyan-500 font-medium  hover:underline ">سجل الدخول</p>
+                </Link>
+              </p>
+            </div>
           </div>
         </div>
       </div>
