@@ -110,7 +110,7 @@ export default function BookRequest() {
                         }
                         <div className="flex-col items-center self-center m-3 p-10 bg-slate-300 h-96 ">
 
-
+                            <div className="text-2xl pb-5"><p>يرجى تحديد موعد</p></div>
                             <div className="flex-col self-start h-full gap-6  "> 
                             <div><input className="border border-black p-3 rounded w-80 " type="date" placeholder='التاريخ' value={meet.date} onChange={(e) => setMeet({ ...meet, date: e.target.value })} /></div>
                             <div><input className="border border-black p-3 rounded w-80 " type="text" placeholder='الوقت' value={meet.time} onChange={(e) => setMeet({ ...meet, time: e.target.value })} /></div>

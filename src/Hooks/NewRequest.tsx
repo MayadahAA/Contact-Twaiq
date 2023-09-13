@@ -6,7 +6,7 @@ export default function NewRequest() {
 
     const url = 'https://64d8b3c25f9bf5b879ce7999.mockapi.io/p'
     const { userId } = useParams();
-    console.log(userId);
+    const [RequestType, setRequestType] = useState('---')
     
     //useState Object of request
     const [requests, setRequest] = useState({
@@ -32,7 +32,7 @@ export default function NewRequest() {
                 time: requests.time,
                 duration: requests.duration,
                 description: requests.description,
-                approval:false
+                approval:'في الانتظار'
             })
             .then(function (response) {
                 console.log(response);
@@ -48,18 +48,26 @@ export default function NewRequest() {
     return (
         <>
             <div className="flex justify-center p-5 gap-3 ">
-            <div className="flex flex-col bg-white border-2 justify-center items-center gap-5  px-3 font-medium p-5 w-96 h-full  rounded ">
+                <div className="flex flex-col bg-white border-2 justify-center items-center gap-5  px-3 font-medium p-5 w-96 h-full  rounded ">
 
                     {/* fields of New Request  */}
                     <div className="font-bold self-start ml-5">طلب جديد</div>
-                    <div><input className="border border-black p-1 rounded w-80" type="date"  value={requests.date} onChange={(e) => setRequest({ ...requests, date: e.target.value })} /></div>
+                    {/* <div><input className="border border-black p-1 rounded w-80" type="date" value={requests.date} onChange={(e) => setRequest({ ...requests, date: e.target.value })} /></div> */}
                     <div><input className="border border-black p-1 rounded w-80" type="text" value={requests.description} onChange={(e) => setRequest({ ...requests, description: e.target.value })} /></div>
+                    <div > <select className="border border-black p-1 rounded w-80"
+                        value={RequestType}
+                        onChange={(e) => setRequestType(e.target.value)}>
+                        <option value={'false'}>---</option>
+                        <option value="مناقشه">مناقشه</option>
+                        <option value="مساعدة">مساعدة</option>
+                    </select></div>
                     <div className="self-center ">
                         <button className='bg-red-500 border w-28 h-10 text-white rounded' onClick={input}>Send</button>
                     </div>
 
                 </div>
             </div>
+            
         </>
     )
 }
