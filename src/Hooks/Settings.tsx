@@ -62,6 +62,7 @@ export default function Settings() {
   };
 
   const logout = () => {
+    localStorage.clear()
     localStorage.removeItem("id");
     location.href = "/signin";
   };
