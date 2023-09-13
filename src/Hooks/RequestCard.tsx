@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 
 interface IRequest {
@@ -28,8 +29,8 @@ export default function RequestCard() {
     const [isLoading, setIsLoading] = useState(false);
     const [request, setRequest] = useState<IRequest[]>([])
 
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(!open);
+    // const [open, setOpen] = useState(false);
+    // const handleOpen = () => setOpen(!open);
 
     try {
         useEffect(() => {
@@ -203,7 +204,7 @@ export default function RequestCard() {
                                                             </>
                                                 }
 
-                                                <button className="w-full" onClick={handleOpen}>
+                                                <Link to={`/BookRequest/${e.id}`} className="w-full">
 
                                                     <div className="flex justify-between m-5 text-black" key={e.id}>
                                                         <div></div>
@@ -229,7 +230,7 @@ export default function RequestCard() {
                                                    
 
 
-                                                </button>
+                                                </Link>
 
                                             </div>
                                         </>
