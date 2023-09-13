@@ -60,7 +60,7 @@ export default function Settings() {
   };
 
   const logout = () => {
-    localStorage.removeItem('id')
+    localStorage.clear()
     location.href = "/signin";
   }
 

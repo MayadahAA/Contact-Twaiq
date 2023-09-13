@@ -1,13 +1,22 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+
+//need get name of user 
+interface IUser {
+    id: string
+    name: string
+}
+
 
 export default function NewRequest() {
 
-    const url = 'https://64d8b3c25f9bf5b879ce7999.mockapi.io/p'
+    const url = 'https://64ec522df9b2b70f2bfa1874.mockapi.io/api/v1/request'
     const { userId } = useParams();
     const [RequestType, setRequestType] = useState('---')
-    
+    //to get name of user
+    const [getUserApi, setUserApi] = useState<IUser[]>([])
+
     //useState Object of request
     const [requests, setRequest] = useState({
       date: '',
@@ -16,23 +25,42 @@ export default function NewRequest() {
       duration: '',
       description: '', 
     })
-    
+
+    //get user name
+    try {
+        useEffect(() => {
+            axios.get('https://64d8b3c25f9bf5b879ce7999.mockapi.io/users')
+                .then((response) => {
+                    setUserApi(response.data)
+                })
+        }, [])
+
+    } catch (error) {
+        console.log(error)
+    }
+
      const id = localStorage.getItem('id')
-     
+
+     //get name of user to stor in request
+    const getUserId = getUserApi.find((e) => e.id == id)
+    const nameUser = getUserId?.name
+
+
+
+
     //input request from fields
     const input = () => {
         try {
             
             //post Request to EndPoint
             axios.post(url, {
-                date: requests.date,
-                day: requests.day,
+                date: Date.now,
                 userId: id,
                 trainerId: userId,
-                time: requests.time,
-                duration: requests.duration,
                 description: requests.description,
-                approval:'في الانتظار'
+                approval: 'في الانتظار',
+                name: nameUser,
+                type:RequestType
             })
             .then(function (response) {
                 console.log(response);
@@ -71,3 +99,6 @@ export default function NewRequest() {
         </>
     )
 }
+
+
+
