@@ -13,7 +13,7 @@ function Navigation() {
 
   return (
     <>
-      <div className="lg:visible md:visible max-sm:hidden ">
+      <div className="lg:visible md:visible max-sm:hidden">
         <div className="h-screen flex items-center flex-col ">
           <div className="flex flex-col items-center justify-center fixed  h-3/4 w-16 rounded-full  bg-white">
             <div className="flex flex-col items-center justify-around h-full w-full">
@@ -66,7 +66,7 @@ function Navigation() {
         </div>
       </div> 
       {/* responsive */}
-      <div className="max-sm:visible lg:hidden sm:visible ">
+      <div className="lg:hidden md:hidden max-sm:visible ">
         <div className="fixed bottom-5 right-5 z-10">
           {showMenu ? (
             <div className="bg-white h-72  p-2 rounded-full shadow-md">
