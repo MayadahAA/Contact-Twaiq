@@ -14,7 +14,7 @@
 
 تم تطوير واجهة المستخدم باستخدام برنامج فيقما للتصميم وتحسين تجربة المستخدم.
 
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FoxCU08AV5OQlnPKIEH5cgw%2FConact-Twaiq%3Ftype%3Ddesign%26node-id%3D261%253A50%26mode%3Ddesign%26t%3DJHyHvyauljxkPK2Q-1" allowfullscreen></iframe>
+<a href="https://www.figma.com/file/oxCU08AV5OQlnPKIEH5cgw/Conact-Twaiq?type=design&node-id=261%3A50&mode=design&t=JHyHvyauljxkPK2Q-1">
 
 <!-- ## روابط النشر
 
@@ -23,5 +23,5 @@
 
 ## صور/لقطات شاشة
 
-![صورة 1](screenshots/screenshot1.png)
-![صورة 2](screenshots/screenshot2.png)
+![صورة 1](screenshots/لقطة%20شاشة%202023-09-14%20081240.png)
+![صورة 2](screenshots/لقطة%20شاشة%202023-09-14%20081406.png)
