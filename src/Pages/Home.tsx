@@ -17,7 +17,7 @@ export default function Home() {
           <div className="w-1/12">
             <Navigation />
           </div>
-          <div className="flex flex-col  w-full">
+          <div className="flex flex-col w-full">
             <InstruCards />
           </div>
         </div>

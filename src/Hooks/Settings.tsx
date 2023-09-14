@@ -90,7 +90,9 @@ export default function Settings() {
                             } ${
                               user.status === "available" ? "bg-blue-400" : ""
                             }${
-                              user.status === "not available" ? "bg-slate-500" : ""
+                              user.status === "not available"
+                                ? "bg-slate-500"
+                                : ""
                             }`}
                           ></div>
                         </div>
@@ -263,7 +265,7 @@ export default function Settings() {
                           <h1 className="block mb-2 text-sm w-full font-medium text-gray-900 ">
                             الحالة
                           </h1>
-                          <div className="flex gap-5">
+                          <div className="flex gap-5 w-full">
                             <h1 className="font-medium text-slate-700">
                               متاح:
                             </h1>
@@ -311,10 +313,10 @@ export default function Settings() {
                           >
                             حفظ
                           </button>
-                          <Link to='/settings'>
-                          <button className="bg-slate-100 rounded-md text-slate-800 font-medium p-2 px-5">
-                            إلغاء
-                          </button>
+                          <Link to="/settings">
+                            <button className="bg-slate-100 rounded-md text-slate-800 font-medium p-2 px-5">
+                              إلغاء
+                            </button>
                           </Link>
                         </div>
                       </div>
@@ -322,12 +324,9 @@ export default function Settings() {
                   </div>
                 )}
               </div>
-                          <div className="w-1/6 float-left bg-red-600 text-white flex items-center justify-center p-2 rounded-md">
-                            
-                          <button onClick={logout} >
-                            تسجيل الخروج
-                          </button>
-                          </div>
+              <div className="w-1/6 float-left bg-red-600 text-white flex items-center justify-center p-2 rounded-md">
+                <button onClick={logout}>تسجيل الخروج</button>
+              </div>
             </div>
           </div>
         </div>

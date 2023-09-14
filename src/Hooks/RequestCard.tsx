@@ -168,151 +168,155 @@ export default function RequestCard() {
           <div className="spinner"></div>
         </div>
       ) : (
-        <div className="flex justify-center mt-4 gap-11 w-full rounded-md shadow-md shadow-slate-300 bg-white overflow-y-auto mb-4">
-          <div className="flex   bg-white w-full">
-            <p className="text-2xl p-3">الطلبات</p>
+        <div className="flex   w-full p-4 gap-5 ">
+        <div className="w-full md:w-2/3 lg:w-1/2">
+          <p className="text-2xl p-3 text-right">طلبات التواصل</p>
+          <div className="flex  gap-5 w-full ">
             {requestFilter.map((e) => (
-              <div key={e.id} className="flex justify-between flex-col w-1/4 border items-center text-white">
-                 <div className="flex flex-col justify-around m-5 text-black w-full">
-                  <div>المرسل : {e.name}</div>
-                  <div>
+              <div key={e.id} className="w-full  md:w-1/2 flex gap-5">
+                <div className=" p-4 text-center w-full gap-5 bg-white flex-col rounded-lg shadow sm:p-5 flex">
+                  <div className="flex w-full justify-between">
+                  <div className=""> {e.name}</div>
                     {e.approval === "تم القبول" ? (
-                      <div className="bg-green-500 rounded-md w-24 h-6 text-center text-sm text-white">
-                        <p>الحالة : {e.approval}</p>
+                      <div className="bg-green-100 border border-green-800/25 rounded-lg w-fit p-1 text-center text-xs text-green-700">
+                        <p> {e.approval}</p>
                       </div>
                     ) : e.approval === "مرفوض" ? (
-                      <div className="bg-red-500 rounded-md w-24 h-6 text-center text-sm text-white">
-                        <p>الحالة : {e.approval}</p>
+                      <div className="bg-red-100 border border-red-800/25 rounded-lg w-fit p-1 text-center text-xs text-red-700">
+                        <p> {e.approval}</p>
                       </div>
                     ) : (
-                      <div className="bg-slate-500 rounded-md w-24 h-6 text-center text-sm text-white">
-                        <p>الحالة : {e.approval}</p>
+                      <div className="bg-slate-100 border border-slate-800/25 rounded-lg w-fit p-1 text-center text-xs text-slate-700">
+                        <p> {e.approval}</p>
                       </div>
                     )}
                   </div>
-                </div>
+                  <div className="flex w-full justify-center gap-3">
+                    
                   {e.approval === "مرفوض" ? (
-                    <div className="pl-24"></div>
+                    <div className=""></div>
                   ) : (
-                    <div className="flex bg-cyan-600 text-white w-24 h-8 rounded-md text-center">
+                    <div className="flex bg-cyan-500 text-white py-2 w-full rounded-md items-center text-center ">
                       <Link to={`/BookRequest/${e.id}`} className="w-full">
-                        تفاصيل اكثر
+                        تفاصيل أكثر
                       </Link>
                     </div>
                   )}
-                {e.approval === "تم القبول" ? (
-                  <>
-                    {isInstructor ? (
-                      ""
-                    ) : (
-                      <div className="flex justify-center m-5">
+                  {e.approval === "تم القبول" ? (
+                    <>
+                      {isInstructor ? (
+                        ""
+                      ) : (
+                        // del btn for accept req
+                        <div className="flex justify-center ">
+                          <button
+                            id="deleteButton"
+                            onClick={() => toggleModal(e.id)}
+                            className="block w-full text-white bg-red-500 font-medium rounded-md text-sm px-5 py-2 text-center"
+                            type="button"
+                          >
+                            حذف
+                          </button>
+                        </div>
+                      )}
+
+                      {isInstructor ? (
+                        <div className="flex mt-4">
+                          <button
+                            type="button"
+                            className="h-8 w-24 mr-3 rounded-md text-white text-center text-sm bg-blue-200"
+                            disabled
+                          >
+                            قبول
+                          </button>
+                          <button
+                            onClick={() => updateRequest("false", e.id)}
+                            className="h-8 w-24 mr-3 rounded-md text-white text-center text-sm bg-red-200"
+                            disabled
+                          >
+                            رفض
+                          </button>
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                    </>
+                  ) : e.approval === "مرفوض" ? (
+                    <>
+                      {isInstructor ? (
+                        ""
+                      ) : (
+                        <div className="flex w-full justify-center gap-3">
                         <button
-                          id="deleteButton"
-                          onClick={() => toggleModal(e.id)}
-                          className="block text-white bg-red-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                          type="button"
+                            onClick={() => toggleModal(e.id)}
+                            className="block text-white bg-red-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                          >
+                            حذف
+                          </button>
+                        </div>
+                      )}
+
+                      {isInstructor ? (
+                        <div className="flex mt-4">
+                          <button
+                            type="button"
+                            className="h-8 w-24 mr-3 rounded-md text-white text-center text-sm bg-blue-200"
+                            disabled
+                          >
+                            قبول
+                          </button>
+                          <button
+                            onClick={() => updateRequest("false", e.id)}
+                            className="h-8 w-24 mr-3 rounded-md text-white text-center text-sm bg-red-200"
+                            disabled
+                          >
+                            رفض
+                          </button>
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                    </>
+                  ) : (
+                    <>
+                      {isInstructor ? (
+                        ""
+                      ) : (
+                        <div
+                          onClick={() => deleteRequest(e.id)}
+                          className="cursor-pointer h-8 w-24 mt-4 rounded-md text-white text-center text-sm bg-red-500"
                         >
                           حذف
-                        </button>
-                      </div>
-                    )}
+                        </div>
+                      )}
 
-                    {isInstructor ? (
-                      <div>
-                        <button
-                          type="button"
-                          className="h-6 w-20 mr-3 rounded-md text-white text-center text-sm bg-blue-200"
-                          disabled
-                        >
-                          قبول
-                        </button>
-                        <button
-                          onClick={() => updateRequest("false", e.id)}
-                          className="h-6 w-20 mr-3 rounded-md text-white text-center text-sm bg-red-200"
-                          disabled
-                        >
-                          رفض
-                        </button>
-                      </div>
-                    ) : (
-                      ""
-                    )}
-                  </>
-                ) : e.approval === "مرفوض" ? (
-                  <>
-                    {isInstructor ? (
-                      ""
-                    ) : (
-                        <div className="flex justify-center m-5">
-                        <button
-                          onClick={() => toggleModal(e.id)}
-                          className="block text-white bg-red-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                        >
-                          حذف
-                        </button>
-                      </div>
-                    )}
-
-                    {isInstructor ? (
-                      <div>
-                        <button
-                          type="button"
-                          className="h-6 w-20 mr-3 rounded-md text-white text-center text-sm bg-blue-200"
-                          disabled
-                        >
-                          قبول
-                        </button>
-                        <button
-                          onClick={() => updateRequest("false", e.id)}
-                          className="h-6 w-20 mr-3 rounded-md text-white text-center text-sm bg-red-200"
-                          disabled
-                        >
-                          رفض
-                        </button>
-                      </div>
-                    ) : (
-                      ""
-                    )}
-                  </>
-                ) : (
-                  <>
-                    {isInstructor ? (
-                      ""
-                    ) : (
-                      <div
-                        onClick={() => deleteRequest(e.id)}
-                        className="cursor-pointer h-6 w-20 mr-3 rounded-md text-white text-center text-sm bg-red-500"
-                      >
-                        حذف
-                      </div>
-                    )}
-
-                    {isInstructor ? (
-                      <div>
-                        <button
-                          onClick={() => updateRequest("true", e.id)}
-                          className="h-6 w-20 mr-3 rounded-md text-white text-center text-sm bg-purple-500"
-                        >
-                          قبول
-                        </button>
-                        <button
-                          onClick={() => updateRequest("false", e.id)}
-                          className="h-6 w-20 mr-3 rounded-md text-white text-center text-sm bg-red-500"
-                        >
-                          رفض
-                        </button>
-                      </div>
-                    ) : (
-                      ""
-                    )}
-                  </>
-                )}
-
-               
+                      {isInstructor ? (
+                        <div className="flex mt-4">
+                          <button
+                            onClick={() => updateRequest("true", e.id)}
+                            className="h-8 w-24 mr-3 rounded-md text-white text-center text-sm bg-purple-500"
+                          >
+                            قبول
+                          </button>
+                          <button
+                            onClick={() => updateRequest("false", e.id)}
+                            className="h-8 w-24 mr-3 rounded-md text-white text-center text-sm bg-red-500"
+                          >
+                            رفض
+                          </button>
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                    </>
+                  )}
+                  </div>
+                </div>
               </div>
             ))}
           </div>
         </div>
+      </div>
       )}
     </>
   );

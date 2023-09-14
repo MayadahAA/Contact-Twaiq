@@ -8,7 +8,7 @@ export default function SendRequest() {
                 <div className="w-1/12">
                     <Navigation />
                 </div>
-                <div className="flex flex-col justify-around w-full">
+                <div className="flex flex-col  w-full">
                     <NewRequest />
                 </div>
 
