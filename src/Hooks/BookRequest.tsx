@@ -91,6 +91,11 @@ export default function BookRequest() {
 
 
                     <div className="flex flex-col  justify-center w-full h-full p-5">
+                        <a href="/dashboard">
+
+                    <h1 className="text-xl">الرجوع</h1>
+                        </a>
+
                         {
                             isLoading ? (
                                 <div className="flex justify-center items-center w-full">

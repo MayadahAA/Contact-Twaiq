@@ -169,10 +169,37 @@ export default function RequestCard() {
         </div>
       ) : (
         <div className="flex justify-center mt-4 gap-11 w-full rounded-md shadow-md shadow-slate-300 bg-white overflow-y-auto mb-4">
-          <div className="flex-col  bg-white w-full">
+          <div className="flex   bg-white w-full">
             <p className="text-2xl p-3">الطلبات</p>
             {requestFilter.map((e) => (
-              <div key={e.id} className="flex justify-between w-full border items-center text-white">
+              <div key={e.id} className="flex justify-between flex-col w-1/4 border items-center text-white">
+                 <div className="flex flex-col justify-around m-5 text-black w-full">
+                  <div>المرسل : {e.name}</div>
+                  <div>
+                    {e.approval === "تم القبول" ? (
+                      <div className="bg-green-500 rounded-md w-24 h-6 text-center text-sm text-white">
+                        <p>الحالة : {e.approval}</p>
+                      </div>
+                    ) : e.approval === "مرفوض" ? (
+                      <div className="bg-red-500 rounded-md w-24 h-6 text-center text-sm text-white">
+                        <p>الحالة : {e.approval}</p>
+                      </div>
+                    ) : (
+                      <div className="bg-slate-500 rounded-md w-24 h-6 text-center text-sm text-white">
+                        <p>الحالة : {e.approval}</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+                  {e.approval === "مرفوض" ? (
+                    <div className="pl-24"></div>
+                  ) : (
+                    <div className="flex bg-cyan-600 text-white w-24 h-8 rounded-md text-center">
+                      <Link to={`/BookRequest/${e.id}`} className="w-full">
+                        تفاصيل اكثر
+                      </Link>
+                    </div>
+                  )}
                 {e.approval === "تم القبول" ? (
                   <>
                     {isInstructor ? (
@@ -281,33 +308,7 @@ export default function RequestCard() {
                   </>
                 )}
 
-                <div className="flex justify-around m-5 text-black w-full">
-                  <div>المرسل : {e.name}</div>
-                  <div>
-                    {e.approval === "تم القبول" ? (
-                      <div className="bg-green-500 rounded-md w-24 h-6 text-center text-sm text-white">
-                        <p>الحالة : {e.approval}</p>
-                      </div>
-                    ) : e.approval === "مرفوض" ? (
-                      <div className="bg-red-500 rounded-md w-24 h-6 text-center text-sm text-white">
-                        <p>الحالة : {e.approval}</p>
-                      </div>
-                    ) : (
-                      <div className="bg-slate-500 rounded-md w-24 h-6 text-center text-sm text-white">
-                        <p>الحالة : {e.approval}</p>
-                      </div>
-                    )}
-                  </div>
-                  {e.approval === "مرفوض" ? (
-                    <div className="pl-24"></div>
-                  ) : (
-                    <div className="flex bg-cyan-600 text-white w-24 h-8 rounded-md text-center">
-                      <Link to={`/BookRequest/${e.id}`} className="w-full">
-                        تفاصيل اكثر
-                      </Link>
-                    </div>
-                  )}
-                </div>
+               
               </div>
             ))}
           </div>

@@ -60,8 +60,7 @@ function Instrucards() {
         {/* search input start*/}
         <div className="p-10  text-slate-800 w-11/12 flex items-center">
           <h1 className="text-4xl">المدربين</h1>
-        </div>
-        <div className="flex justify-end w-11/12 items-center gap-2 p-5">
+        <div className="flex justify-end w-full items-center gap-2 ">
           <div className="flex items-center gap-2 rounded-md bg-white px-2 border-2 border-slate-400">
             <input
               type="text"
@@ -87,6 +86,7 @@ function Instrucards() {
               </svg>
             </label>
           </div>
+        </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-10 w-11/12">
           {sortedInstructors.map((e) => (

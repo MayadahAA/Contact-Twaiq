@@ -102,12 +102,12 @@ function Calendar() {
                               {hourData.time}
                             </span>{" "}
                             {hourData.requests && (
-                              <ul className="flex items-center border bg-cyan-800/10 border-cyan-900/20 text-slate-600 font-medium p-3 rounded-md w-full max-sm:w-full">
+                              <ul className="flex items-center border justify-between  bg-cyan-800/10 border-cyan-900/20 text-slate-600 font-medium p-3 rounded-md w-full max-sm:w-full">
                                 {hourData.requests.map((request) => (
                                   // Request card
                                   <li
                                     key={request.name}
-                                    className="flex gap-5 items-center justify-between"
+                                    className="flex gap-5 items-center justify-between w-full"
                                   >
                                     <span className="font-semibold">
                                       {request.name}
