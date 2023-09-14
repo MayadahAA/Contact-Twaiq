@@ -46,7 +46,7 @@ export default function Header() {
                     <img src={logo} alt="" />
                   </div>
                 </Link>
-                  <h1 >تـــــواصــل</h1>
+                  <h1 >تواصل طويق</h1>
               </div>
               <div className="flex items-center gap-4 ">
 
