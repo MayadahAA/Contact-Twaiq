@@ -10,7 +10,7 @@ function Dashboard() {
           <div className="w-1/12">
             <Navgation />
           </div>
-          <div className="flex flex-col w-full">
+          <div className="flex flex-col w-full gap-5">
             <Calendar />
             <RequestCard />
           </div>

@@ -27,11 +27,12 @@ export default function Header() {
       });
   }, [id]);
 
-  const statusState = instructor.status === "busy"
-    ? "bg-red-500"
-    : instructor.status === "available"
-    ? "bg-blue-400"
-    : "bg-slate-500";
+  const statusState =
+    instructor.status === "busy"
+      ? "bg-red-500"
+      : instructor.status === "available"
+      ? "bg-blue-400"
+      : "bg-slate-500";
 
   return (
     <>
@@ -39,14 +40,20 @@ export default function Header() {
         <nav className="flex justify-center">
           <ul className="gap-4 p-3 bg-white w-full font-bold text-sm">
             <div className="flex justify-between px-10 items-center text-slate-800">
-              <div>
+              <div className="flex items-center gap-5 text-2xl font-medium text-purple-950"> 
                 <Link to="/">
                   <div>
                     <img src={logo} alt="" />
                   </div>
                 </Link>
+                  <h1 >تـــــواصــل</h1>
               </div>
+              <div className="flex items-center gap-4 ">
 
+              <div className=" max-sm:hidden  text-sm flex gap-2 text-slate-700">
+                <h1>   اهلا </h1>
+                <p>{instructor.name}</p>
+              </div>
               <div className="flex items-center gap-4">
                 <Link to="/settings">
                   <div className="relative">
@@ -61,6 +68,8 @@ export default function Header() {
                   </div>
                 </Link>
               </div>
+              </div>
+              
             </div>
           </ul>
         </nav>
