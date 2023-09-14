@@ -37,7 +37,29 @@ export default function NewSession() {
       <div className="w-full md:w-1/12">
         <Navigation />
       </div>
-      <div className="flex justify-center p-6 w-full">
+      <div className="p-5">
+
+      <a href="/dashboard" className="flex items-center  ">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 16"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M8.25 4.5l7.5 7.5-7.5 7.5"
+            />
+          </svg>
+        <h1 className="text-base" >
+          رجوع
+        </h1>
+      </a>
+      </div>
+      <div className="flex  justify-center p-6 w-full">
         <div className="flex flex-col bg-white border-2 justify-center items-center gap-5 px-3 font-medium w-full md:w-6/12 h-auto md:h-96 p-3 rounded">
           <div className="font-bold self-start ml-5">جلسة جديدة</div>
           <div>
@@ -84,9 +106,9 @@ export default function NewSession() {
               }
             />
           </div>
-          <div className="self-center">
+          <div className="flex w-2/4">
             <button
-              className="bg-red-500 border w-28 h-10 text-white rounded"
+              className="bg-cyan-500 border w-full h-10 text-white rounded"
               onClick={input}
             >
               ارسال
