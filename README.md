@@ -14,7 +14,9 @@
 
 تم تطوير واجهة المستخدم باستخدام برنامج فيقما للتصميم وتحسين تجربة المستخدم.
 
-<a href="https://www.figma.com/file/oxCU08AV5OQlnPKIEH5cgw/Conact-Twaiq?type=design&node-id=261%3A50&mode=design&t=JHyHvyauljxkPK2Q-1">
+
+[figma](https://www.figma.com/file/oxCU08AV5OQlnPKIEH5cgw/Conact-Twaiq?type=design&node-id=261%3A50&mode=design&t=JHyHvyauljxkPK2Q-1)
+
 
 <!-- ## روابط النشر
 
