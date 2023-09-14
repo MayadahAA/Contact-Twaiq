@@ -39,7 +39,7 @@ export default function NewSession() {
       </div>
       <div className="p-5">
 
-      <a href="/dashboard" className="flex items-center  ">
+      <a href="/community" className="flex items-center  ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
